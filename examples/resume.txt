@@ -1,0 +1,8 @@
+Education: BSc in Software Engineering
+
+Skills:
+Python, Java, C++, Git
+
+Projects:
+LLM Fine-tuning Project using PyTorch and LoRA.
+Full-stack Task Management Platform using Spring Boot and Vue.
