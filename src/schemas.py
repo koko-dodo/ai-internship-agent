@@ -1,7 +1,7 @@
 
-from typing import Any
+from typing import Annotated, Any, Literal, Self
 
-from pydantic import BaseModel, ConfigDict, Field, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StringConstraints, field_validator, model_validator
 
 
 class CandidateProfile(BaseModel):
@@ -99,3 +99,93 @@ class ToolSchema(BaseModel):
     name: str = Field(min_length=1)
     description: str = Field(min_length=1)
     parameters: dict[str, Any]
+
+
+# Day 4 models are separate from the original MatchResult for compatibility.
+NonblankText = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1)]
+MatchStatus = Literal["supported", "partial", "not_found", "uncertain"]
+
+
+class MatchingModel(BaseModel):
+    model_config = ConfigDict(strict=True, extra="forbid")
+
+
+class SemanticJobExtraction(MatchingModel):
+    title: NonblankText
+    company: str = ""
+    required_skills: list[NonblankText]
+    preferred_skills: list[NonblankText]
+    needs_verification: list[NonblankText] = Field(default_factory=list)
+
+
+class ProposedSkillAssessment(MatchingModel):
+    skill: NonblankText
+    status: MatchStatus
+    quotes: list[str]
+    reasoning: NonblankText
+
+
+class SemanticEvidenceEvaluation(MatchingModel):
+    assessments: list[ProposedSkillAssessment]
+    needs_verification: list[NonblankText] = Field(default_factory=list)
+
+
+class ResumeEvidence(MatchingModel):
+    quote: str = Field(min_length=1)
+    source: NonblankText
+    resume_sha256: str = Field(pattern=r"^[0-9a-f]{64}$")
+    start_line: int = Field(ge=1)
+    end_line: int = Field(ge=1)
+    context: str = Field(min_length=1)
+
+    @model_validator(mode="after")
+    def ordered_lines(self) -> Self:
+        if self.end_line < self.start_line or not self.quote.strip():
+            raise ValueError("Evidence needs nonblank text and ordered line numbers")
+        return self
+
+
+class SkillMatchState(MatchingModel):
+    skill: NonblankText
+    category: Literal["required", "preferred"]
+    status: MatchStatus
+
+
+class EvidenceSkillMatch(SkillMatchState):
+    evidence: list[ResumeEvidence] = Field(default_factory=list)
+    reasoning: str
+    validation_notes: list[str] = Field(default_factory=list)
+
+    @model_validator(mode="after")
+    def positive_states_need_evidence(self) -> Self:
+        if self.status in {"supported", "partial"} and not self.evidence:
+            raise ValueError("Positive match states require verified evidence")
+        return self
+
+
+class ScoringWeights(MatchingModel):
+    required: float = Field(default=2.0, gt=0, allow_inf_nan=False)
+    preferred: float = Field(default=1.0, gt=0, allow_inf_nan=False)
+
+
+class MatchScore(MatchingModel):
+    score: float = Field(ge=0, le=100, allow_inf_nan=False)
+    applicable: bool
+    earned_weight: float = Field(ge=0, allow_inf_nan=False)
+    total_weight: float = Field(ge=0, allow_inf_nan=False)
+    weights: ScoringWeights
+
+
+class EvidenceMatchReport(MatchingModel):
+    job: JobPosting
+    resume_source: NonblankText
+    resume_sha256: str = Field(pattern=r"^[0-9a-f]{64}$")
+    skills: list[EvidenceSkillMatch]
+    score: MatchScore
+    analysis: str
+    needs_verification: list[str]
+    caveat: str = "not_found 只表示当前简历证据不足，不代表候选人没有这项能力。"
+
+
+class MatchResumeToJobArguments(ToolArguments):
+    """No arguments: resume path, JD and allowed directory are bound by the app."""
