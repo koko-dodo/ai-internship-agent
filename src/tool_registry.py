@@ -9,16 +9,18 @@ from pydantic import BaseModel, ValidationError
 
 from .schemas import (
     FindEvidenceArguments, ParseJobArguments, ReadResumeArguments, ToolError, ToolResult,
+    ToolSchema,
 )
 from .tools import DEFAULT_RESUME_DIRECTORY, find_evidence, parse_job, read_resume
 
 
 class ToolRegistry:
     def __init__(self) -> None:
-        self._tools: dict[str, tuple[type[BaseModel], Callable[..., Any]]] = {}
+        self._tools: dict[str, tuple[type[BaseModel], Callable[..., Any], str]] = {}
 
     def register(
-        self, name: str, arguments_model: type[BaseModel], handler: Callable[..., Any]
+        self, name: str, arguments_model: type[BaseModel], handler: Callable[..., Any],
+        *, description: str | None = None,
     ) -> None:
         """Only application code registers tools; reject duplicate names."""
         if not name.strip():
@@ -29,7 +31,20 @@ class ToolRegistry:
             raise TypeError("A Pydantic arguments model and callable are required")
         if arguments_model.model_config.get("extra") != "forbid":
             raise ValueError("Tool argument models must forbid extra fields")
-        self._tools[name] = (arguments_model, handler)
+        self._tools[name] = (
+            arguments_model, handler,
+            description or handler.__doc__ or f"Run {name}.",
+        )
+
+    def get_tool_schemas(self) -> list[ToolSchema]:
+        """Derive fresh JSON Schemas from the exact execution argument models."""
+        return [
+            ToolSchema(
+                name=name, description=description,
+                parameters=arguments_model.model_json_schema(),
+            )
+            for name, (arguments_model, _, description) in self._tools.items()
+        ]
 
     def execute(self, name: str, arguments: Any) -> ToolResult:
         def failure(code: str, message: str) -> ToolResult:
@@ -39,7 +54,7 @@ class ToolRegistry:
 
         if name not in self._tools:
             return failure("unknown_tool", f"Unknown tool: {name}")
-        model, handler = self._tools[name]
+        model, handler, _ = self._tools[name]
         if not isinstance(arguments, dict):
             return failure("invalid_arguments", "Tool arguments must be an object")
         try:
@@ -83,6 +98,7 @@ def create_tool_registry(
     registry.register(
         "read_resume", ReadResumeArguments,
         partial(read_resume, allowed_directory=Path(allowed_directory).resolve()),
+        description=read_resume.__doc__,
     )
     registry.register("parse_job", ParseJobArguments, parse_job)
     registry.register("find_evidence", FindEvidenceArguments, find_evidence)
