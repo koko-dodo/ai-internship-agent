@@ -1,0 +1,533 @@
+{
+  "01": {
+    "job": {
+      "title": "Fictional internship",
+      "company": "Fictional Example Co",
+      "required_skills": [
+        "Python",
+        "SQL"
+      ],
+      "preferred_skills": [],
+      "needs_verification": []
+    },
+    "initial": {
+      "assessments": [
+        {
+          "skill": "Python",
+          "status": "supported",
+          "quotes": [
+            "I implemented Python CSV validation with unit tests."
+          ],
+          "reasoning": "Scripted offline judgment; not model reasoning."
+        },
+        {
+          "skill": "SQL",
+          "status": "supported",
+          "quotes": [
+            "I wrote SQL JOIN queries and checked aggregates against expected rows."
+          ],
+          "reasoning": "Scripted offline judgment; not model reasoning."
+        }
+      ],
+      "needs_verification": []
+    },
+    "model_score": 88.0,
+    "supplemental": {},
+    "actions": [
+      {
+        "action": "FINISH",
+        "reason": "Scripted end of this fixture."
+      }
+    ]
+  },
+  "02": {
+    "job": {
+      "title": "Fictional internship",
+      "company": "Fictional Example Co",
+      "required_skills": [
+        "RAG"
+      ],
+      "preferred_skills": [],
+      "needs_verification": []
+    },
+    "initial": {
+      "assessments": [
+        {
+          "skill": "RAG",
+          "status": "not_found",
+          "quotes": [],
+          "reasoning": "Scripted offline judgment; not model reasoning."
+        }
+      ],
+      "needs_verification": []
+    },
+    "model_score": 88.0,
+    "supplemental": {
+      "RAG": {
+        "skill": "RAG",
+        "status": "supported",
+        "citations": [
+          {
+            "source": "evaluation/02/b_rag.md",
+            "quote": "I implemented RAG retrieval with document citations and tested retrieval against a fixed set of questions."
+          }
+        ],
+        "reasoning": "Scripted semantic assessment of the fixture, not autonomous reasoning."
+      }
+    },
+    "actions": [
+      {
+        "action": "SEARCH",
+        "skill": "RAG",
+        "source": "evaluation/02/b_rag.md",
+        "reason": "Scripted retrieval of authorized material."
+      },
+      {
+        "action": "FINISH",
+        "reason": "Scripted end of this fixture."
+      }
+    ]
+  },
+  "03": {
+    "job": {
+      "title": "Fictional internship",
+      "company": "Fictional Example Co",
+      "required_skills": [
+        "SQL"
+      ],
+      "preferred_skills": [],
+      "needs_verification": []
+    },
+    "initial": {
+      "assessments": [
+        {
+          "skill": "SQL",
+          "status": "not_found",
+          "quotes": [],
+          "reasoning": "Scripted offline judgment; not model reasoning."
+        }
+      ],
+      "needs_verification": []
+    },
+    "model_score": 88.0,
+    "supplemental": {},
+    "actions": [
+      {
+        "action": "SEARCH",
+        "skill": "SQL",
+        "source": "evaluation/03/notes.md",
+        "reason": "Scripted retrieval of authorized material."
+      },
+      {
+        "action": "ASK_USER",
+        "skill": "SQL",
+        "question": "Can you provide candidate-owned SQL project evidence?",
+        "reason": "Scripted clarification request."
+      },
+      {
+        "action": "FINISH",
+        "reason": "Scripted end of this fixture."
+      }
+    ]
+  },
+  "04": {
+    "job": {
+      "title": "Fictional internship",
+      "company": "Fictional Example Co",
+      "required_skills": [
+        "SQL"
+      ],
+      "preferred_skills": [],
+      "needs_verification": []
+    },
+    "initial": {
+      "assessments": [
+        {
+          "skill": "SQL",
+          "status": "partial",
+          "quotes": [
+            "I completed a basic SQL tutorial."
+          ],
+          "reasoning": "Scripted offline judgment; not model reasoning."
+        }
+      ],
+      "needs_verification": []
+    },
+    "model_score": 88.0,
+    "supplemental": {
+      "SQL": {
+        "skill": "SQL",
+        "status": "uncertain",
+        "citations": [
+          {
+            "source": "evaluation/04/sql.md",
+            "quote": "I have never written SQL queries; the teammate authored all queries in the project."
+          }
+        ],
+        "reasoning": "Scripted semantic assessment of the fixture, not autonomous reasoning."
+      }
+    },
+    "actions": [
+      {
+        "action": "SEARCH",
+        "skill": "SQL",
+        "source": "evaluation/04/sql.md",
+        "reason": "Scripted retrieval of authorized material."
+      },
+      {
+        "action": "ASK_USER",
+        "skill": "SQL",
+        "question": "Can you provide candidate-owned SQL project evidence?",
+        "reason": "Scripted clarification request."
+      },
+      {
+        "action": "FINISH",
+        "reason": "Scripted end of this fixture."
+      }
+    ]
+  },
+  "05": {
+    "job": {
+      "title": "Fictional internship",
+      "company": "Fictional Example Co",
+      "required_skills": [
+        "SQL"
+      ],
+      "preferred_skills": [],
+      "needs_verification": []
+    },
+    "initial": {
+      "assessments": [
+        {
+          "skill": "SQL",
+          "status": "partial",
+          "quotes": [
+            "I completed a basic SQL tutorial."
+          ],
+          "reasoning": "Scripted offline judgment; not model reasoning."
+        }
+      ],
+      "needs_verification": []
+    },
+    "model_score": 88.0,
+    "supplemental": {
+      "SQL": {
+        "skill": "SQL",
+        "status": "partial",
+        "citations": [
+          {
+            "source": "evaluation/05/sql.md",
+            "quote": "I wrote SQL JOIN and GROUP BY queries and checked the returned rows."
+          },
+          {
+            "source": "evaluation/05/sql.md",
+            "quote": "The project used synthetic data and was not deployed to production."
+          }
+        ],
+        "reasoning": "Scripted semantic assessment of the fixture, not autonomous reasoning."
+      }
+    },
+    "actions": [
+      {
+        "action": "SEARCH",
+        "skill": "SQL",
+        "source": "evaluation/05/sql.md",
+        "reason": "Scripted retrieval of authorized material."
+      },
+      {
+        "action": "ASK_USER",
+        "skill": "SQL",
+        "question": "Can you provide candidate-owned SQL project evidence?",
+        "reason": "Scripted clarification request."
+      },
+      {
+        "action": "FINISH",
+        "reason": "Scripted end of this fixture."
+      }
+    ]
+  },
+  "06": {
+    "job": {
+      "title": "Fictional internship",
+      "company": "Fictional Example Co",
+      "required_skills": [
+        "Docker"
+      ],
+      "preferred_skills": [],
+      "needs_verification": []
+    },
+    "initial": {
+      "assessments": [
+        {
+          "skill": "Docker",
+          "status": "supported",
+          "quotes": [
+            "The team used Docker; I only wrote documentation."
+          ],
+          "reasoning": "Scripted offline judgment; not model reasoning."
+        }
+      ],
+      "needs_verification": []
+    },
+    "model_score": 88.0,
+    "supplemental": {},
+    "actions": [
+      {
+        "action": "FINISH",
+        "reason": "Scripted end of this fixture."
+      }
+    ]
+  },
+  "07": {
+    "job": {
+      "title": "Fictional internship",
+      "company": "Fictional Example Co",
+      "required_skills": [
+        "RAG"
+      ],
+      "preferred_skills": [],
+      "needs_verification": []
+    },
+    "initial": {
+      "assessments": [
+        {
+          "skill": "RAG",
+          "status": "not_found",
+          "quotes": [],
+          "reasoning": "Scripted offline judgment; not model reasoning."
+        }
+      ],
+      "needs_verification": []
+    },
+    "model_score": 88.0,
+    "supplemental": {},
+    "actions": [
+      {
+        "action": "ASK_USER",
+        "skill": "RAG",
+        "question": "Can you provide candidate-owned RAG project evidence?",
+        "reason": "Scripted clarification request."
+      },
+      {
+        "action": "FINISH",
+        "reason": "Scripted end of this fixture."
+      }
+    ]
+  },
+  "08": {
+    "job": {
+      "title": "Fictional internship",
+      "company": "Fictional Example Co",
+      "required_skills": [
+        "SQL"
+      ],
+      "preferred_skills": [],
+      "needs_verification": []
+    },
+    "initial": {
+      "assessments": [
+        {
+          "skill": "SQL",
+          "status": "not_found",
+          "quotes": [],
+          "reasoning": "Scripted offline judgment; not model reasoning."
+        }
+      ],
+      "needs_verification": []
+    },
+    "model_score": 88.0,
+    "supplemental": {},
+    "actions": [
+      {
+        "action": "ASK_USER",
+        "skill": "SQL",
+        "question": "Can you provide candidate-owned SQL project evidence?",
+        "reason": "Scripted clarification request."
+      },
+      {
+        "action": "FINISH",
+        "reason": "Scripted end of this fixture."
+      }
+    ]
+  },
+  "09": {
+    "job": {
+      "title": "Fictional internship",
+      "company": "Fictional Example Co",
+      "required_skills": [
+        "Python"
+      ],
+      "preferred_skills": [],
+      "needs_verification": []
+    },
+    "initial": {
+      "assessments": [
+        {
+          "skill": "Python",
+          "status": "supported",
+          "quotes": [
+            "I implemented Python production services at Fictional Space Corp."
+          ],
+          "reasoning": "Scripted offline judgment; not model reasoning."
+        }
+      ],
+      "needs_verification": []
+    },
+    "model_score": 88.0,
+    "supplemental": {},
+    "actions": [
+      {
+        "action": "ASK_USER",
+        "skill": "Python",
+        "question": "Can you provide candidate-owned Python project evidence?",
+        "reason": "Scripted clarification request."
+      },
+      {
+        "action": "FINISH",
+        "reason": "Scripted end of this fixture."
+      }
+    ]
+  },
+  "10": {
+    "job": {
+      "title": "Fictional internship",
+      "company": "Fictional Example Co",
+      "required_skills": [
+        "RAG"
+      ],
+      "preferred_skills": [],
+      "needs_verification": []
+    },
+    "initial": {
+      "assessments": [
+        {
+          "skill": "RAG",
+          "status": "not_found",
+          "quotes": [],
+          "reasoning": "Scripted offline judgment; not model reasoning."
+        }
+      ],
+      "needs_verification": []
+    },
+    "model_score": 88.0,
+    "supplemental": {
+      "RAG": {
+        "skill": "RAG",
+        "status": "supported",
+        "citations": [
+          {
+            "source": "evaluation/10/rag.md",
+            "quote": "I implemented RAG retrieval with citations and evaluated retrieved document IDs."
+          }
+        ],
+        "reasoning": "Scripted semantic assessment of the fixture, not autonomous reasoning."
+      }
+    },
+    "actions": [
+      {
+        "action": "SEARCH",
+        "skill": "RAG",
+        "source": "evaluation/10/rag.md",
+        "reason": "Scripted retrieval of authorized material."
+      }
+    ]
+  },
+  "11": {
+    "job": {
+      "title": "Fictional internship",
+      "company": "Fictional Example Co",
+      "required_skills": [
+        "SQL"
+      ],
+      "preferred_skills": [],
+      "needs_verification": []
+    },
+    "initial": {
+      "assessments": [
+        {
+          "skill": "SQL",
+          "status": "not_found",
+          "quotes": [],
+          "reasoning": "Scripted offline judgment; not model reasoning."
+        }
+      ],
+      "needs_verification": []
+    },
+    "model_score": 88.0,
+    "supplemental": {
+      "SQL": {
+        "skill": "SQL",
+        "status": "supported",
+        "citations": [
+          {
+            "source": "evaluation/11/sql.md",
+            "quote": "I wrote SQL JOIN queries and verified each aggregate against expected rows."
+          }
+        ],
+        "reasoning": "Scripted semantic assessment of the fixture, not autonomous reasoning."
+      }
+    },
+    "actions": [
+      {
+        "action": "SEARCH",
+        "skill": "SQL",
+        "source": "evaluation/11/sql.md",
+        "reason": "Scripted retrieval of authorized material."
+      }
+    ]
+  },
+  "12": {
+    "job": {
+      "title": "Fictional internship",
+      "company": "Fictional Example Co",
+      "required_skills": [
+        "SQL"
+      ],
+      "preferred_skills": [],
+      "needs_verification": []
+    },
+    "initial": {
+      "assessments": [
+        {
+          "skill": "SQL",
+          "status": "not_found",
+          "quotes": [],
+          "reasoning": "Scripted offline judgment; not model reasoning."
+        }
+      ],
+      "needs_verification": []
+    },
+    "model_score": 88.0,
+    "supplemental": {
+      "SQL": {
+        "skill": "SQL",
+        "status": "supported",
+        "citations": [
+          {
+            "source": "evaluation/12/sql.md",
+            "quote": "I wrote SQL JOIN queries and verified their output with fixture-based tests."
+          }
+        ],
+        "reasoning": "Scripted semantic assessment of the fixture, not autonomous reasoning."
+      }
+    },
+    "actions": [
+      {
+        "action": "ASK_USER",
+        "skill": "arrival_time",
+        "question": "Can you provide candidate-owned arrival_time project evidence?",
+        "reason": "Scripted clarification request."
+      },
+      {
+        "action": "SEARCH",
+        "skill": "SQL",
+        "source": "evaluation/12/sql.md",
+        "reason": "Scripted retrieval of authorized material."
+      },
+      {
+        "action": "FINISH",
+        "reason": "Scripted end of this fixture."
+      }
+    ]
+  }
+}

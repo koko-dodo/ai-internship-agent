@@ -1,0 +1,345 @@
+{
+  "version": "gold-v1",
+  "provenance": "Initial fictional fixtures and labels drafted by coding assistant; independent semantic review decisions supplied by the user and implemented by coding assistant for frozen Gold v1. No multiple-annotator agreement is claimed. Target: sufficiency of complete authorized file evidence against explicit JD skill conditions, not verification of actual candidate ability.",
+  "status_definitions": {
+    "supported": "Specific candidate-owned practice evidence satisfies all explicit JD skill conditions.",
+    "partial": "Some relevant practice or knowledge is evidenced, but not all requirements are satisfied.",
+    "not_found": "No sufficient credible file evidence for the required practice, or explicit denial of relevant practice.",
+    "uncertain": "Substantive contradiction, ownership conflict, or evidence that cannot be reliably resolved."
+  },
+  "cases": [
+    {
+      "id": "01",
+      "scenario": "complete",
+      "resume": "evaluation/01/resume.md",
+      "jd": "evaluation/01/jd.md",
+      "authorized_sources": [
+        "evaluation/01/notes.md"
+      ],
+      "gold": [
+        {
+          "skill": "Python",
+          "category": "required",
+          "status": "supported",
+          "rationale": "Concrete candidate-owned implementation and tests meet this basic Python requirement.",
+          "evidence": [
+            {
+              "source": "evaluation/01/resume.md",
+              "quote": "I implemented Python CSV validation with unit tests.",
+              "start_line": 3,
+              "end_line": 3,
+              "relation": "supports"
+            }
+          ]
+        },
+        {
+          "skill": "SQL",
+          "category": "required",
+          "status": "supported",
+          "rationale": "Candidate-owned SQL joins and result checks meet the stated querying requirement.",
+          "evidence": [
+            {
+              "source": "evaluation/01/resume.md",
+              "quote": "I wrote SQL JOIN queries and checked aggregates against expected rows.",
+              "start_line": 5,
+              "end_line": 5,
+              "relation": "supports"
+            }
+          ]
+        }
+      ],
+      "user_reply": null,
+      "fault": null
+    },
+    {
+      "id": "02",
+      "scenario": "supplement_available",
+      "resume": "evaluation/02/resume.md",
+      "jd": "evaluation/02/jd.md",
+      "authorized_sources": [
+        "evaluation/02/a_notes.md",
+        "evaluation/02/b_rag.md"
+      ],
+      "gold": [
+        {
+          "skill": "RAG",
+          "category": "required",
+          "status": "supported",
+          "rationale": "The authorized fictional project explicitly describes candidate-owned Retrieval, Augmentation of the LLM prompt with retrieved context, and Generation of cited answers. These substantiate the broad Required: RAG condition.",
+          "evidence": [
+            {
+              "source": "evaluation/02/b_rag.md",
+              "quote": "Retrieval: I implemented RAG retrieval with document citations and tested retrieval against a fixed set of questions.\nAugmentation: I inserted the retrieved passages into the LLM prompt as context.\nGeneration: I called the LLM with that context to produce answers with citations to the retrieved documents.",
+              "start_line": 1,
+              "end_line": 3,
+              "relation": "supports"
+            }
+          ]
+        }
+      ],
+      "user_reply": null,
+      "fault": null
+    },
+    {
+      "id": "03",
+      "scenario": "empty_retrieval",
+      "resume": "evaluation/03/resume.md",
+      "jd": "evaluation/03/jd.md",
+      "authorized_sources": [
+        "evaluation/03/notes.md"
+      ],
+      "gold": [
+        {
+          "skill": "SQL",
+          "category": "required",
+          "status": "not_found",
+          "rationale": "Neither resume nor the authorized notes contain evidence of SQL practice.",
+          "evidence": []
+        }
+      ],
+      "user_reply": "I have no additional SQL project files to authorize.",
+      "fault": null
+    },
+    {
+      "id": "04",
+      "scenario": "negation",
+      "resume": "evaluation/04/resume.md",
+      "jd": "evaluation/04/jd.md",
+      "authorized_sources": [
+        "evaluation/04/sql.md"
+      ],
+      "gold": [
+        {
+          "skill": "SQL",
+          "category": "required",
+          "status": "not_found",
+          "rationale": "Completing a basic tutorial does not necessarily imply writing SQL queries. The authorized project explicitly denies candidate-owned query practice; there is no necessary contradiction. Under the independently reviewed standard, the required practice is not substantiated.",
+          "evidence": [
+            {
+              "source": "evaluation/04/resume.md",
+              "quote": "I completed a basic SQL tutorial.",
+              "start_line": 3,
+              "end_line": 3,
+              "relation": "partial"
+            },
+            {
+              "source": "evaluation/04/sql.md",
+              "quote": "I have never written SQL queries; the teammate authored all queries in the project.",
+              "start_line": 1,
+              "end_line": 1,
+              "relation": "negates"
+            }
+          ]
+        }
+      ],
+      "user_reply": "I cannot provide evidence of query ownership.",
+      "fault": null
+    },
+    {
+      "id": "05",
+      "scenario": "partial_requirement",
+      "resume": "evaluation/05/resume.md",
+      "jd": "evaluation/05/jd.md",
+      "authorized_sources": [
+        "evaluation/05/sql.md"
+      ],
+      "gold": [
+        {
+          "skill": "SQL",
+          "category": "required",
+          "status": "partial",
+          "rationale": "Query practice is substantiated; the JD additionally requires real business/production experience, which these files do not establish.",
+          "evidence": [
+            {
+              "source": "evaluation/05/resume.md",
+              "quote": "I completed a basic SQL tutorial.",
+              "start_line": 3,
+              "end_line": 3,
+              "relation": "partial"
+            },
+            {
+              "source": "evaluation/05/sql.md",
+              "quote": "I wrote SQL JOIN and GROUP BY queries and checked the returned rows.",
+              "start_line": 1,
+              "end_line": 1,
+              "relation": "partial"
+            },
+            {
+              "source": "evaluation/05/sql.md",
+              "quote": "The project used synthetic data and was not deployed to production.",
+              "start_line": 3,
+              "end_line": 3,
+              "relation": "limits"
+            }
+          ]
+        }
+      ],
+      "user_reply": "I have no real business project document to authorize.",
+      "fault": null
+    },
+    {
+      "id": "06",
+      "scenario": "irrelevant_keyword",
+      "resume": "evaluation/06/resume.md",
+      "jd": "evaluation/06/jd.md",
+      "authorized_sources": [],
+      "gold": [
+        {
+          "skill": "Docker",
+          "category": "required",
+          "status": "not_found",
+          "rationale": "A team-level keyword and candidate documentation work do not establish personal container practice.",
+          "evidence": [
+            {
+              "source": "evaluation/06/resume.md",
+              "quote": "The team used Docker; I only wrote documentation.",
+              "start_line": 3,
+              "end_line": 3,
+              "relation": "irrelevant"
+            }
+          ]
+        }
+      ],
+      "user_reply": null,
+      "fault": null
+    },
+    {
+      "id": "07",
+      "scenario": "waiting_user",
+      "resume": "evaluation/07/resume.md",
+      "jd": "evaluation/07/jd.md",
+      "authorized_sources": [],
+      "gold": [
+        {
+          "skill": "RAG",
+          "category": "required",
+          "status": "not_found",
+          "rationale": "No resume evidence or authorized supplemental documents; clarification is needed, not assumed.",
+          "evidence": []
+        }
+      ],
+      "user_reply": null,
+      "fault": null
+    },
+    {
+      "id": "08",
+      "scenario": "unverified_reply",
+      "resume": "evaluation/08/resume.md",
+      "jd": "evaluation/08/jd.md",
+      "authorized_sources": [],
+      "gold": [
+        {
+          "skill": "SQL",
+          "category": "required",
+          "status": "not_found",
+          "rationale": "The simulated verbal claim is not verified project-file evidence.",
+          "evidence": []
+        }
+      ],
+      "user_reply": "I say I wrote production SQL queries, but cannot provide a file or original excerpt.",
+      "fault": null
+    },
+    {
+      "id": "09",
+      "scenario": "fabricated_citation",
+      "resume": "evaluation/09/resume.md",
+      "jd": "evaluation/09/jd.md",
+      "authorized_sources": [],
+      "gold": [
+        {
+          "skill": "Python",
+          "category": "required",
+          "status": "not_found",
+          "rationale": "The available resume contains no Python practice; model-invented text must not become evidence.",
+          "evidence": []
+        }
+      ],
+      "user_reply": null,
+      "fault": null
+    },
+    {
+      "id": "10",
+      "scenario": "permission_failure",
+      "resume": "evaluation/10/resume.md",
+      "jd": "evaluation/10/jd.md",
+      "authorized_sources": [
+        "evaluation/10/rag.md"
+      ],
+      "gold": [
+        {
+          "skill": "RAG",
+          "category": "required",
+          "status": "supported",
+          "rationale": "The authorized fictional project explicitly describes candidate-owned Retrieval, Augmentation of the LLM prompt with retrieved context, and Generation of cited answers. These substantiate the broad Required: RAG condition. Runtime access denial is a separate injected fault, not a change to factual Gold.",
+          "evidence": [
+            {
+              "source": "evaluation/10/rag.md",
+              "quote": "Retrieval: I implemented RAG retrieval with citations and evaluated retrieved document IDs.\nAugmentation: I inserted the retrieved passages into the LLM prompt as context.\nGeneration: I called the LLM with that context to produce answers with citations to the retrieved documents.",
+              "start_line": 1,
+              "end_line": 3,
+              "relation": "supports"
+            }
+          ]
+        }
+      ],
+      "user_reply": null,
+      "fault": "access_denied"
+    },
+    {
+      "id": "11",
+      "scenario": "tool_failure",
+      "resume": "evaluation/11/resume.md",
+      "jd": "evaluation/11/jd.md",
+      "authorized_sources": [
+        "evaluation/11/sql.md"
+      ],
+      "gold": [
+        {
+          "skill": "SQL",
+          "category": "required",
+          "status": "supported",
+          "rationale": "The full fixture substantiates SQL, even when the shared injected I/O failure prevents runtime retrieval.",
+          "evidence": [
+            {
+              "source": "evaluation/11/sql.md",
+              "quote": "I wrote SQL JOIN queries and verified each aggregate against expected rows.",
+              "start_line": 1,
+              "end_line": 1,
+              "relation": "supports"
+            }
+          ]
+        }
+      ],
+      "user_reply": null,
+      "fault": "io_error"
+    },
+    {
+      "id": "12",
+      "scenario": "invalid_action",
+      "resume": "evaluation/12/resume.md",
+      "jd": "evaluation/12/jd.md",
+      "authorized_sources": [
+        "evaluation/12/sql.md"
+      ],
+      "gold": [
+        {
+          "skill": "SQL",
+          "category": "required",
+          "status": "supported",
+          "rationale": "Candidate-owned queries and output checks in the authorized file support the requirement.",
+          "evidence": [
+            {
+              "source": "evaluation/12/sql.md",
+              "quote": "I wrote SQL JOIN queries and verified their output with fixture-based tests.",
+              "start_line": 1,
+              "end_line": 1,
+              "relation": "supports"
+            }
+          ]
+        }
+      ],
+      "user_reply": null,
+      "fault": null
+    }
+  ]
+}

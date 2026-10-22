@@ -1,0 +1,605 @@
+{
+  "character_definition": "Python len() of message.content summed over all action-decision requests; includes instruction, schema and data; not tokens or bytes.",
+  "dataset_fingerprint": "8b6061303cda37c88904cead19d77500f9e9ab6405ad7f993ffd1d3b7f46c105",
+  "dataset_version": "gold-v1",
+  "interpretation": "Fixed responses with current code/frozen fixtures validate format and controller equivalence, not live model behavior, historical HTTP prompt lengths or token savings.",
+  "mode": "offline_mock_and_saved_response_replay",
+  "optimization": "compact_action_decision_JSON_only",
+  "rows": [
+    {
+      "after": {
+        "decision_calls": 1,
+        "decision_context_characters": 2614,
+        "decision_context_characters_per_call": [
+          2614
+        ],
+        "error_codes": [],
+        "llm_requests": 3,
+        "retrieval_attempts": 0,
+        "status": "finished",
+        "token_usage": "unavailable",
+        "waiting_events": 0
+      },
+      "before": {
+        "decision_calls": 1,
+        "decision_context_characters": 2784,
+        "decision_context_characters_per_call": [
+          2784
+        ],
+        "error_codes": [],
+        "llm_requests": 3,
+        "retrieval_attempts": 0,
+        "status": "finished",
+        "token_usage": "unavailable",
+        "waiting_events": 0
+      },
+      "case_id": "01",
+      "checks": {
+        "all_request_structures_values_instructions_equal": true,
+        "non_decision_prompts_byte_equal": true,
+        "predictions_and_citations_equal": true,
+        "run_equal_except_measured_latency": true,
+        "scores_equal": true,
+        "trace_and_interactions_equal": true
+      },
+      "fixture": "scripted_mock",
+      "scenario": "complete"
+    },
+    {
+      "after": {
+        "decision_calls": 2,
+        "decision_context_characters": 5738,
+        "decision_context_characters_per_call": [
+          2868,
+          2870
+        ],
+        "error_codes": [],
+        "llm_requests": 5,
+        "retrieval_attempts": 1,
+        "status": "finished",
+        "token_usage": "unavailable",
+        "waiting_events": 0
+      },
+      "before": {
+        "decision_calls": 2,
+        "decision_context_characters": 6115,
+        "decision_context_characters_per_call": [
+          3056,
+          3059
+        ],
+        "error_codes": [],
+        "llm_requests": 5,
+        "retrieval_attempts": 1,
+        "status": "finished",
+        "token_usage": "unavailable",
+        "waiting_events": 0
+      },
+      "case_id": "02",
+      "checks": {
+        "all_request_structures_values_instructions_equal": true,
+        "non_decision_prompts_byte_equal": true,
+        "predictions_and_citations_equal": true,
+        "run_equal_except_measured_latency": true,
+        "scores_equal": true,
+        "trace_and_interactions_equal": true
+      },
+      "fixture": "scripted_mock",
+      "scenario": "supplement_available"
+    },
+    {
+      "after": {
+        "decision_calls": 3,
+        "decision_context_characters": 8520,
+        "decision_context_characters_per_call": [
+          2711,
+          2870,
+          2939
+        ],
+        "error_codes": [],
+        "llm_requests": 5,
+        "retrieval_attempts": 1,
+        "status": "finished",
+        "token_usage": "unavailable",
+        "waiting_events": 1
+      },
+      "before": {
+        "decision_calls": 3,
+        "decision_context_characters": 9074,
+        "decision_context_characters_per_call": [
+          2887,
+          3060,
+          3127
+        ],
+        "error_codes": [],
+        "llm_requests": 5,
+        "retrieval_attempts": 1,
+        "status": "finished",
+        "token_usage": "unavailable",
+        "waiting_events": 1
+      },
+      "case_id": "03",
+      "checks": {
+        "all_request_structures_values_instructions_equal": true,
+        "non_decision_prompts_byte_equal": true,
+        "predictions_and_citations_equal": true,
+        "run_equal_except_measured_latency": true,
+        "scores_equal": true,
+        "trace_and_interactions_equal": true
+      },
+      "fixture": "scripted_mock",
+      "scenario": "empty_retrieval"
+    },
+    {
+      "after": {
+        "decision_calls": 3,
+        "decision_context_characters": 8489,
+        "decision_context_characters_per_call": [
+          2703,
+          2862,
+          2924
+        ],
+        "error_codes": [],
+        "llm_requests": 6,
+        "retrieval_attempts": 1,
+        "status": "finished",
+        "token_usage": "unavailable",
+        "waiting_events": 1
+      },
+      "before": {
+        "decision_calls": 3,
+        "decision_context_characters": 9043,
+        "decision_context_characters_per_call": [
+          2879,
+          3052,
+          3112
+        ],
+        "error_codes": [],
+        "llm_requests": 6,
+        "retrieval_attempts": 1,
+        "status": "finished",
+        "token_usage": "unavailable",
+        "waiting_events": 1
+      },
+      "case_id": "04",
+      "checks": {
+        "all_request_structures_values_instructions_equal": true,
+        "non_decision_prompts_byte_equal": true,
+        "predictions_and_citations_equal": true,
+        "run_equal_except_measured_latency": true,
+        "scores_equal": true,
+        "trace_and_interactions_equal": true
+      },
+      "fixture": "scripted_mock",
+      "scenario": "negation"
+    },
+    {
+      "after": {
+        "decision_calls": 3,
+        "decision_context_characters": 8495,
+        "decision_context_characters_per_call": [
+          2704,
+          2859,
+          2932
+        ],
+        "error_codes": [],
+        "llm_requests": 6,
+        "retrieval_attempts": 1,
+        "status": "finished",
+        "token_usage": "unavailable",
+        "waiting_events": 1
+      },
+      "before": {
+        "decision_calls": 3,
+        "decision_context_characters": 9049,
+        "decision_context_characters_per_call": [
+          2880,
+          3049,
+          3120
+        ],
+        "error_codes": [],
+        "llm_requests": 6,
+        "retrieval_attempts": 1,
+        "status": "finished",
+        "token_usage": "unavailable",
+        "waiting_events": 1
+      },
+      "case_id": "05",
+      "checks": {
+        "all_request_structures_values_instructions_equal": true,
+        "non_decision_prompts_byte_equal": true,
+        "predictions_and_citations_equal": true,
+        "run_equal_except_measured_latency": true,
+        "scores_equal": true,
+        "trace_and_interactions_equal": true
+      },
+      "fixture": "scripted_mock",
+      "scenario": "partial_requirement"
+    },
+    {
+      "after": {
+        "decision_calls": 1,
+        "decision_context_characters": 2466,
+        "decision_context_characters_per_call": [
+          2466
+        ],
+        "error_codes": [],
+        "llm_requests": 3,
+        "retrieval_attempts": 0,
+        "status": "finished",
+        "token_usage": "unavailable",
+        "waiting_events": 0
+      },
+      "before": {
+        "decision_calls": 1,
+        "decision_context_characters": 2623,
+        "decision_context_characters_per_call": [
+          2623
+        ],
+        "error_codes": [],
+        "llm_requests": 3,
+        "retrieval_attempts": 0,
+        "status": "finished",
+        "token_usage": "unavailable",
+        "waiting_events": 0
+      },
+      "case_id": "06",
+      "checks": {
+        "all_request_structures_values_instructions_equal": true,
+        "non_decision_prompts_byte_equal": true,
+        "predictions_and_citations_equal": true,
+        "run_equal_except_measured_latency": true,
+        "scores_equal": true,
+        "trace_and_interactions_equal": true
+      },
+      "fixture": "scripted_mock",
+      "scenario": "irrelevant_keyword"
+    },
+    {
+      "after": {
+        "decision_calls": 1,
+        "decision_context_characters": 2543,
+        "decision_context_characters_per_call": [
+          2543
+        ],
+        "error_codes": [],
+        "llm_requests": 3,
+        "retrieval_attempts": 0,
+        "status": "waiting_for_user",
+        "token_usage": "unavailable",
+        "waiting_events": 1
+      },
+      "before": {
+        "decision_calls": 1,
+        "decision_context_characters": 2707,
+        "decision_context_characters_per_call": [
+          2707
+        ],
+        "error_codes": [],
+        "llm_requests": 3,
+        "retrieval_attempts": 0,
+        "status": "waiting_for_user",
+        "token_usage": "unavailable",
+        "waiting_events": 1
+      },
+      "case_id": "07",
+      "checks": {
+        "all_request_structures_values_instructions_equal": true,
+        "non_decision_prompts_byte_equal": true,
+        "predictions_and_citations_equal": true,
+        "run_equal_except_measured_latency": true,
+        "scores_equal": true,
+        "trace_and_interactions_equal": true
+      },
+      "fixture": "scripted_mock",
+      "scenario": "waiting_user"
+    },
+    {
+      "after": {
+        "decision_calls": 2,
+        "decision_context_characters": 5187,
+        "decision_context_characters_per_call": [
+          2543,
+          2644
+        ],
+        "error_codes": [],
+        "llm_requests": 4,
+        "retrieval_attempts": 0,
+        "status": "finished",
+        "token_usage": "unavailable",
+        "waiting_events": 1
+      },
+      "before": {
+        "decision_calls": 2,
+        "decision_context_characters": 5513,
+        "decision_context_characters_per_call": [
+          2707,
+          2806
+        ],
+        "error_codes": [],
+        "llm_requests": 4,
+        "retrieval_attempts": 0,
+        "status": "finished",
+        "token_usage": "unavailable",
+        "waiting_events": 1
+      },
+      "case_id": "08",
+      "checks": {
+        "all_request_structures_values_instructions_equal": true,
+        "non_decision_prompts_byte_equal": true,
+        "predictions_and_citations_equal": true,
+        "run_equal_except_measured_latency": true,
+        "scores_equal": true,
+        "trace_and_interactions_equal": true
+      },
+      "fixture": "scripted_mock",
+      "scenario": "unverified_reply"
+    },
+    {
+      "after": {
+        "decision_calls": 1,
+        "decision_context_characters": 2549,
+        "decision_context_characters_per_call": [
+          2549
+        ],
+        "error_codes": [],
+        "llm_requests": 3,
+        "retrieval_attempts": 0,
+        "status": "waiting_for_user",
+        "token_usage": "unavailable",
+        "waiting_events": 1
+      },
+      "before": {
+        "decision_calls": 1,
+        "decision_context_characters": 2713,
+        "decision_context_characters_per_call": [
+          2713
+        ],
+        "error_codes": [],
+        "llm_requests": 3,
+        "retrieval_attempts": 0,
+        "status": "waiting_for_user",
+        "token_usage": "unavailable",
+        "waiting_events": 1
+      },
+      "case_id": "09",
+      "checks": {
+        "all_request_structures_values_instructions_equal": true,
+        "non_decision_prompts_byte_equal": true,
+        "predictions_and_citations_equal": true,
+        "run_equal_except_measured_latency": true,
+        "scores_equal": true,
+        "trace_and_interactions_equal": true
+      },
+      "fixture": "scripted_mock",
+      "scenario": "fabricated_citation"
+    },
+    {
+      "after": {
+        "decision_calls": 1,
+        "decision_context_characters": 2708,
+        "decision_context_characters_per_call": [
+          2708
+        ],
+        "error_codes": [
+          "access_denied",
+          "access_denied"
+        ],
+        "llm_requests": 3,
+        "retrieval_attempts": 1,
+        "status": "permission_denied",
+        "token_usage": "unavailable",
+        "waiting_events": 0
+      },
+      "before": {
+        "decision_calls": 1,
+        "decision_context_characters": 2884,
+        "decision_context_characters_per_call": [
+          2884
+        ],
+        "error_codes": [
+          "access_denied",
+          "access_denied"
+        ],
+        "llm_requests": 3,
+        "retrieval_attempts": 1,
+        "status": "permission_denied",
+        "token_usage": "unavailable",
+        "waiting_events": 0
+      },
+      "case_id": "10",
+      "checks": {
+        "all_request_structures_values_instructions_equal": true,
+        "non_decision_prompts_byte_equal": true,
+        "predictions_and_citations_equal": true,
+        "run_equal_except_measured_latency": true,
+        "scores_equal": true,
+        "trace_and_interactions_equal": true
+      },
+      "fixture": "scripted_mock",
+      "scenario": "permission_failure"
+    },
+    {
+      "after": {
+        "decision_calls": 1,
+        "decision_context_characters": 2707,
+        "decision_context_characters_per_call": [
+          2707
+        ],
+        "error_codes": [
+          "io_error",
+          "io_error"
+        ],
+        "llm_requests": 3,
+        "retrieval_attempts": 1,
+        "status": "tool_error",
+        "token_usage": "unavailable",
+        "waiting_events": 0
+      },
+      "before": {
+        "decision_calls": 1,
+        "decision_context_characters": 2883,
+        "decision_context_characters_per_call": [
+          2883
+        ],
+        "error_codes": [
+          "io_error",
+          "io_error"
+        ],
+        "llm_requests": 3,
+        "retrieval_attempts": 1,
+        "status": "tool_error",
+        "token_usage": "unavailable",
+        "waiting_events": 0
+      },
+      "case_id": "11",
+      "checks": {
+        "all_request_structures_values_instructions_equal": true,
+        "non_decision_prompts_byte_equal": true,
+        "predictions_and_citations_equal": true,
+        "run_equal_except_measured_latency": true,
+        "scores_equal": true,
+        "trace_and_interactions_equal": true
+      },
+      "fixture": "scripted_mock",
+      "scenario": "tool_failure"
+    },
+    {
+      "after": {
+        "decision_calls": 3,
+        "decision_context_characters": 8337,
+        "decision_context_characters_per_call": [
+          2707,
+          2848,
+          2782
+        ],
+        "error_codes": [
+          "invalid_target"
+        ],
+        "llm_requests": 6,
+        "retrieval_attempts": 1,
+        "status": "finished",
+        "token_usage": "unavailable",
+        "waiting_events": 0
+      },
+      "before": {
+        "decision_calls": 3,
+        "decision_context_characters": 8877,
+        "decision_context_characters_per_call": [
+          2883,
+          3029,
+          2965
+        ],
+        "error_codes": [
+          "invalid_target"
+        ],
+        "llm_requests": 6,
+        "retrieval_attempts": 1,
+        "status": "finished",
+        "token_usage": "unavailable",
+        "waiting_events": 0
+      },
+      "case_id": "12",
+      "checks": {
+        "all_request_structures_values_instructions_equal": true,
+        "non_decision_prompts_byte_equal": true,
+        "predictions_and_citations_equal": true,
+        "run_equal_except_measured_latency": true,
+        "scores_equal": true,
+        "trace_and_interactions_equal": true
+      },
+      "fixture": "scripted_mock",
+      "scenario": "invalid_action"
+    },
+    {
+      "after": {
+        "decision_calls": 2,
+        "decision_context_characters": 5738,
+        "decision_context_characters_per_call": [
+          2868,
+          2870
+        ],
+        "error_codes": [],
+        "llm_requests": 5,
+        "retrieval_attempts": 1,
+        "status": "finished",
+        "token_usage": "unavailable",
+        "waiting_events": 0
+      },
+      "before": {
+        "decision_calls": 2,
+        "decision_context_characters": 6115,
+        "decision_context_characters_per_call": [
+          3056,
+          3059
+        ],
+        "error_codes": [],
+        "llm_requests": 5,
+        "retrieval_attempts": 1,
+        "status": "finished",
+        "token_usage": "unavailable",
+        "waiting_events": 0
+      },
+      "case_id": "02",
+      "checks": {
+        "all_request_structures_values_instructions_equal": true,
+        "non_decision_prompts_byte_equal": true,
+        "predictions_and_citations_equal": true,
+        "run_equal_except_measured_latency": true,
+        "scores_equal": true,
+        "trace_and_interactions_equal": true
+      },
+      "fixture": "saved_response_replay",
+      "scenario": "supplement_available"
+    },
+    {
+      "after": {
+        "decision_calls": 4,
+        "decision_context_characters": 12837,
+        "decision_context_characters_per_call": [
+          3022,
+          3203,
+          3311,
+          3301
+        ],
+        "error_codes": [],
+        "llm_requests": 7,
+        "retrieval_attempts": 2,
+        "status": "finished",
+        "token_usage": "unavailable",
+        "waiting_events": 1
+      },
+      "before": {
+        "decision_calls": 4,
+        "decision_context_characters": 13672,
+        "decision_context_characters_per_call": [
+          3218,
+          3414,
+          3529,
+          3511
+        ],
+        "error_codes": [],
+        "llm_requests": 7,
+        "retrieval_attempts": 2,
+        "status": "finished",
+        "token_usage": "unavailable",
+        "waiting_events": 1
+      },
+      "case_id": "05",
+      "checks": {
+        "all_request_structures_values_instructions_equal": true,
+        "non_decision_prompts_byte_equal": true,
+        "predictions_and_citations_equal": true,
+        "run_equal_except_measured_latency": true,
+        "scores_equal": true,
+        "trace_and_interactions_equal": true
+      },
+      "fixture": "saved_response_replay",
+      "scenario": "partial_requirement"
+    }
+  ],
+  "source_sha256": {
+    "evaluation/reports/deepseek-case02-run01/real.json": "d1dbddffec56a204d8b5350073f7d48cd098aaf33721320f746b28c02e1aaf4c",
+    "evaluation/reports/deepseek-case05-run01/real.json": "016bee38d19d7a48d3051a35cc96a795455d00b29041385fe183c018dcac296f"
+  },
+  "token_usage": "unavailable"
+}

@@ -102,7 +102,9 @@ def test_user_statement_alone_never_becomes_document_evidence(root):
     assert result.report.score.score == result.initial_report.score.score == 0
     assert result.report.skills[0].evidence == []
     assert result.searches == 0
-    assert "verified\": false" in mock.requests[-1].messages[0].content
+    decision_data = json.loads(mock.requests[-1].messages[0].content.split("\n")[-1])["data"]
+    assert decision_data["user_statements_unverified"][-1]["verified"] is False
+    assert decision_data["user_statements_unverified"][-1]["answer"] == statement
     assert statement not in "\n".join(item.model_dump_json() for item in result.trace)
     assert result.question is None
 

@@ -1,0 +1,1786 @@
+{
+  "by_scenario": {
+    "partial_requirement": {
+      "agent": {
+        "api_requests": 7,
+        "citation_total": 5,
+        "citation_valid": 5,
+        "duplicate_actions": 0,
+        "duplicate_skill_predictions": 0,
+        "error_rate": 0.0,
+        "evidence_validity": 1.0,
+        "invalid_actions": 0,
+        "latency_seconds": 12.699361416976899,
+        "llm_requests": 7,
+        "positive_citations_reviewed": 0,
+        "positive_citations_supported": 0,
+        "retrieval_attempts": 2,
+        "runs": 1,
+        "semantic_positive_support": null,
+        "semantic_review_coverage": 0.0,
+        "semantic_reviewed": 0,
+        "skill_correct": 1,
+        "skill_status_accuracy": 1.0,
+        "skill_total": 1,
+        "status_counts": {
+          "finished": 1
+        },
+        "task_completion_rate": 1.0,
+        "token_usage": {
+          "completion_tokens": 724,
+          "prompt_tokens": 6542,
+          "total_tokens": 7266
+        },
+        "unexpected_skills": 0,
+        "useful_retrieval_rate": 0.0,
+        "useful_retrievals": 0,
+        "waiting_rate": 0.0
+      },
+      "fixed": {
+        "api_requests": 3,
+        "citation_total": 6,
+        "citation_valid": 6,
+        "duplicate_actions": 0,
+        "duplicate_skill_predictions": 0,
+        "error_rate": 0.0,
+        "evidence_validity": 1.0,
+        "invalid_actions": 0,
+        "latency_seconds": 5.542328416835517,
+        "llm_requests": 3,
+        "positive_citations_reviewed": 3,
+        "positive_citations_supported": 2,
+        "retrieval_attempts": 1,
+        "runs": 1,
+        "semantic_positive_support": 0.6666666666666666,
+        "semantic_review_coverage": 0.5,
+        "semantic_reviewed": 3,
+        "skill_correct": 1,
+        "skill_status_accuracy": 1.0,
+        "skill_total": 1,
+        "status_counts": {
+          "finished": 1
+        },
+        "task_completion_rate": 1.0,
+        "token_usage": {
+          "completion_tokens": 361,
+          "prompt_tokens": 1722,
+          "total_tokens": 2083
+        },
+        "unexpected_skills": 0,
+        "useful_retrieval_rate": 1.0,
+        "useful_retrievals": 1,
+        "waiting_rate": 0.0
+      },
+      "single": {
+        "api_requests": 1,
+        "citation_total": 1,
+        "citation_valid": 1,
+        "duplicate_actions": 0,
+        "duplicate_skill_predictions": 0,
+        "error_rate": 0.0,
+        "evidence_validity": 1.0,
+        "invalid_actions": 0,
+        "latency_seconds": 3.506095999851823,
+        "llm_requests": 1,
+        "positive_citations_reviewed": 1,
+        "positive_citations_supported": 1,
+        "retrieval_attempts": 0,
+        "runs": 1,
+        "semantic_positive_support": 1.0,
+        "semantic_review_coverage": 1.0,
+        "semantic_reviewed": 1,
+        "skill_correct": 1,
+        "skill_status_accuracy": 1.0,
+        "skill_total": 1,
+        "status_counts": {
+          "finished": 1
+        },
+        "task_completion_rate": 1.0,
+        "token_usage": {
+          "completion_tokens": 173,
+          "prompt_tokens": 448,
+          "total_tokens": 621
+        },
+        "unexpected_skills": 0,
+        "useful_retrieval_rate": null,
+        "useful_retrievals": 0,
+        "waiting_rate": 0.0
+      }
+    }
+  },
+  "dataset_fingerprint": "8b6061303cda37c88904cead19d77500f9e9ab6405ad7f993ffd1d3b7f46c105",
+  "dataset_version": "gold-v1",
+  "interpretation": "Small live-model experiment; review provenance is recorded, no multiple-annotator agreement claimed",
+  "mode": "real",
+  "model": "deepseek-flash",
+  "normal_access_controls": {
+    "runs": [],
+    "summary": {}
+  },
+  "original_summary": {
+    "agent": {
+      "api_requests": 7,
+      "citation_total": 5,
+      "citation_valid": 5,
+      "duplicate_actions": 0,
+      "duplicate_skill_predictions": 0,
+      "error_rate": 0.0,
+      "evidence_validity": 1.0,
+      "invalid_actions": 0,
+      "latency_seconds": 12.699361416976899,
+      "llm_requests": 7,
+      "positive_citations_reviewed": 0,
+      "positive_citations_supported": 0,
+      "retrieval_attempts": 2,
+      "runs": 1,
+      "semantic_positive_support": null,
+      "semantic_review_coverage": 0.0,
+      "semantic_reviewed": 0,
+      "skill_correct": 0,
+      "skill_status_accuracy": 0.0,
+      "skill_total": 3,
+      "status_counts": {
+        "finished": 1
+      },
+      "task_completion_rate": 1.0,
+      "token_usage": {
+        "completion_tokens": 724,
+        "prompt_tokens": 6542,
+        "total_tokens": 7266
+      },
+      "unexpected_skills": 2,
+      "useful_retrieval_rate": 0.0,
+      "useful_retrievals": 0,
+      "waiting_rate": 0.0
+    },
+    "fixed": {
+      "api_requests": 3,
+      "citation_total": 6,
+      "citation_valid": 6,
+      "duplicate_actions": 0,
+      "duplicate_skill_predictions": 0,
+      "error_rate": 0.0,
+      "evidence_validity": 1.0,
+      "invalid_actions": 0,
+      "latency_seconds": 5.542328416835517,
+      "llm_requests": 3,
+      "positive_citations_reviewed": 3,
+      "positive_citations_supported": 2,
+      "retrieval_attempts": 1,
+      "runs": 1,
+      "semantic_positive_support": 0.6666666666666666,
+      "semantic_review_coverage": 0.5,
+      "semantic_reviewed": 3,
+      "skill_correct": 1,
+      "skill_status_accuracy": 0.5,
+      "skill_total": 2,
+      "status_counts": {
+        "finished": 1
+      },
+      "task_completion_rate": 1.0,
+      "token_usage": {
+        "completion_tokens": 361,
+        "prompt_tokens": 1722,
+        "total_tokens": 2083
+      },
+      "unexpected_skills": 1,
+      "useful_retrieval_rate": 1.0,
+      "useful_retrievals": 1,
+      "waiting_rate": 0.0
+    },
+    "single": {
+      "api_requests": 1,
+      "citation_total": 1,
+      "citation_valid": 1,
+      "duplicate_actions": 0,
+      "duplicate_skill_predictions": 0,
+      "error_rate": 0.0,
+      "evidence_validity": 1.0,
+      "invalid_actions": 0,
+      "latency_seconds": 3.506095999851823,
+      "llm_requests": 1,
+      "positive_citations_reviewed": 1,
+      "positive_citations_supported": 1,
+      "retrieval_attempts": 0,
+      "runs": 1,
+      "semantic_positive_support": 1.0,
+      "semantic_review_coverage": 1.0,
+      "semantic_reviewed": 1,
+      "skill_correct": 1,
+      "skill_status_accuracy": 0.5,
+      "skill_total": 2,
+      "status_counts": {
+        "finished": 1
+      },
+      "task_completion_rate": 1.0,
+      "token_usage": {
+        "completion_tokens": 173,
+        "prompt_tokens": 448,
+        "total_tokens": 621
+      },
+      "unexpected_skills": 1,
+      "useful_retrieval_rate": null,
+      "useful_retrievals": 0,
+      "waiting_rate": 0.0
+    }
+  },
+  "report_kind": "offline_re_scored_saved_runs_not_new_model_execution",
+  "rules_version": "skill-alignment-v2",
+  "runs": [
+    {
+      "metrics": {
+        "alignment": {
+          "judgments": [
+            {
+              "condition_indices": [
+                1
+              ],
+              "primary_indices": [
+                0
+              ],
+              "reason": "conservative_condition_composition",
+              "required_conditions": [
+                "production",
+                "real_business_data"
+              ],
+              "skill": "SQL",
+              "status": "partial"
+            }
+          ],
+          "mappings": [
+            {
+              "conditions": [],
+              "index": 0,
+              "key": "sql",
+              "kind": "skill",
+              "normalized_skill": "SQL",
+              "original_skill": "SQL",
+              "reason": "exact_name",
+              "status": "partial"
+            },
+            {
+              "conditions": [
+                "real_business_data",
+                "production"
+              ],
+              "index": 1,
+              "key": "sql",
+              "kind": "condition",
+              "normalized_skill": "SQL",
+              "original_skill": "Experience with real business data in production",
+              "reason": "declared_condition_and_explicit_JD_binding",
+              "status": "not_found"
+            }
+          ],
+          "unexpected_keys": []
+        },
+        "citation_total": 1,
+        "citation_valid": 1,
+        "duplicate_actions": 0,
+        "duplicate_skill_predictions": 0,
+        "evidence_audit": [
+          {
+            "located_spans": [
+              {
+                "end_line": 3,
+                "start_line": 3
+              }
+            ],
+            "semantic_relations": [
+              "partial"
+            ],
+            "skill": "SQL",
+            "source": "evaluation/05/resume.md",
+            "verbatim_and_location_valid": true
+          }
+        ],
+        "evidence_validity": 1.0,
+        "invalid_actions": 0,
+        "normalization_scope": "skill_metrics_only; evidence_and_retrieval_metrics_remain_legacy",
+        "positive_citations_reviewed": 1,
+        "positive_citations_supported": 1,
+        "retrieval_attempts": 0,
+        "retrieval_audit": [],
+        "rules_version": "skill-alignment-v2",
+        "semantic_positive_support": 1.0,
+        "semantic_review_coverage": 1.0,
+        "semantic_reviewed": 1,
+        "skill_correct": 1,
+        "skill_status_accuracy": 1.0,
+        "skill_total": 1,
+        "unexpected_skills": 0,
+        "useful_retrieval_rate": null,
+        "useful_retrievals": 0
+      },
+      "original_metrics": {
+        "citation_total": 1,
+        "citation_valid": 1,
+        "duplicate_actions": 0,
+        "duplicate_skill_predictions": 0,
+        "evidence_audit": [
+          {
+            "located_spans": [
+              {
+                "end_line": 3,
+                "start_line": 3
+              }
+            ],
+            "semantic_relations": [
+              "partial"
+            ],
+            "skill": "SQL",
+            "source": "evaluation/05/resume.md",
+            "verbatim_and_location_valid": true
+          }
+        ],
+        "evidence_validity": 1.0,
+        "invalid_actions": 0,
+        "positive_citations_reviewed": 1,
+        "positive_citations_supported": 1,
+        "retrieval_attempts": 0,
+        "retrieval_audit": [],
+        "semantic_positive_support": 1.0,
+        "semantic_review_coverage": 1.0,
+        "semantic_reviewed": 1,
+        "skill_correct": 1,
+        "skill_status_accuracy": 0.5,
+        "skill_total": 2,
+        "unexpected_skills": 1,
+        "useful_retrieval_rate": null,
+        "useful_retrievals": 0
+      },
+      "run": {
+        "authorized_sources": [],
+        "budgets": {
+          "max_requests": 1,
+          "max_rounds": 5,
+          "max_searches": 0,
+          "resume_rounds": 2
+        },
+        "case_id": "05",
+        "changes": [],
+        "citations_verified_by_method": false,
+        "condition": "as_configured",
+        "cost": {
+          "api_requests": 1,
+          "llm_requests": 1,
+          "token_usage": {
+            "completion_tokens": 173,
+            "prompt_tokens": 448,
+            "total_tokens": 621
+          },
+          "usage_requests_available": 1
+        },
+        "initial_checkpoint_fingerprint": null,
+        "initial_states": {},
+        "injected_fault": null,
+        "input_fingerprint": "d353ab1fd7b6489eee5ad1552fb4b28751628b4e5e9b1ffbd1b8233a292dadb9",
+        "interactions": [],
+        "latency_seconds": 3.506095999851823,
+        "method": "single",
+        "mode": "real",
+        "model": "deepseek-flash",
+        "model_outputs": [
+          {
+            "error_code": null,
+            "request": 1,
+            "response": {
+              "final_answer": "{\"assessments\": [{\"skill\": \"SQL\", \"status\": \"partial\", \"quotes\": [\"I completed a basic SQL tutorial.\"], \"reasoning\": \"The resume shows only introductory SQL learning via a tutorial, which supports basic SQL familiarity but not the JD's requirement for querying real business data in production.\"}, {\"skill\": \"Experience with real business data in production\", \"status\": \"not_found\", \"quotes\": [], \"reasoning\": \"No resume evidence mentions production systems, business data, or applied querying; insufficient evidence to assess this requirement.\"}], \"needs_verification\": [\"Whether the candidate has used SQL on any real (non-tutorial) datasets, even in academic or personal projects\", \"Any production or business-data exposure not mentioned in the resume\"], \"model_score\": 20}",
+              "tool_calls": []
+            },
+            "stage": "single_assessment",
+            "usage": {
+              "completion_tokens": 173,
+              "prompt_tokens": 448,
+              "total_tokens": 621
+            }
+          }
+        ],
+        "predictions": [
+          {
+            "citations": [
+              {
+                "end_line": null,
+                "quote": "I completed a basic SQL tutorial.",
+                "resume_sha256": null,
+                "source": "evaluation/05/resume.md",
+                "start_line": null
+              }
+            ],
+            "skill": "SQL",
+            "status": "partial"
+          },
+          {
+            "citations": [],
+            "skill": "Experience with real business data in production",
+            "status": "not_found"
+          }
+        ],
+        "raw_model_output": "{\"assessments\": [{\"skill\": \"SQL\", \"status\": \"partial\", \"quotes\": [\"I completed a basic SQL tutorial.\"], \"reasoning\": \"The resume shows only introductory SQL learning via a tutorial, which supports basic SQL familiarity but not the JD's requirement for querying real business data in production.\"}, {\"skill\": \"Experience with real business data in production\", \"status\": \"not_found\", \"quotes\": [], \"reasoning\": \"No resume evidence mentions production systems, business data, or applied querying; insufficient evidence to assess this requirement.\"}], \"needs_verification\": [\"Whether the candidate has used SQL on any real (non-tutorial) datasets, even in academic or personal projects\", \"Any production or business-data exposure not mentioned in the resume\"], \"model_score\": 20}",
+        "reason": "",
+        "retrievals": [],
+        "scenario": "partial_requirement",
+        "score": 20.0,
+        "status": "finished",
+        "trace": []
+      }
+    },
+    {
+      "metrics": {
+        "alignment": {
+          "judgments": [
+            {
+              "condition_indices": [
+                1
+              ],
+              "primary_indices": [
+                0
+              ],
+              "reason": "conservative_condition_composition",
+              "required_conditions": [
+                "production",
+                "real_business_data"
+              ],
+              "skill": "SQL",
+              "status": "partial"
+            }
+          ],
+          "mappings": [
+            {
+              "conditions": [],
+              "index": 0,
+              "key": "sql",
+              "kind": "skill",
+              "normalized_skill": "SQL",
+              "original_skill": "SQL",
+              "reason": "exact_name",
+              "status": "partial"
+            },
+            {
+              "conditions": [
+                "real_business_data",
+                "production"
+              ],
+              "index": 1,
+              "key": "sql",
+              "kind": "condition",
+              "normalized_skill": "SQL",
+              "original_skill": "SQL querying on real business data in production",
+              "reason": "declared_condition_and_explicit_JD_binding",
+              "status": "not_found"
+            }
+          ],
+          "unexpected_keys": []
+        },
+        "citation_total": 6,
+        "citation_valid": 6,
+        "duplicate_actions": 0,
+        "duplicate_skill_predictions": 0,
+        "evidence_audit": [
+          {
+            "located_spans": [
+              {
+                "end_line": 3,
+                "start_line": 3
+              }
+            ],
+            "semantic_relations": [
+              "partial"
+            ],
+            "skill": "SQL",
+            "source": "evaluation/05/resume.md",
+            "verbatim_and_location_valid": true
+          },
+          {
+            "located_spans": [
+              {
+                "end_line": 1,
+                "start_line": 1
+              }
+            ],
+            "semantic_relations": [
+              "partial"
+            ],
+            "skill": "SQL",
+            "source": "evaluation/05/sql.md",
+            "verbatim_and_location_valid": true
+          },
+          {
+            "located_spans": [
+              {
+                "end_line": 3,
+                "start_line": 3
+              }
+            ],
+            "semantic_relations": [
+              "limits"
+            ],
+            "skill": "SQL",
+            "source": "evaluation/05/sql.md",
+            "verbatim_and_location_valid": true
+          },
+          {
+            "located_spans": [
+              {
+                "end_line": 3,
+                "start_line": 3
+              }
+            ],
+            "semantic_relations": [
+              "unreviewed"
+            ],
+            "skill": "SQL",
+            "source": "evaluation/05/sql.md",
+            "verbatim_and_location_valid": true
+          },
+          {
+            "located_spans": [
+              {
+                "end_line": 3,
+                "start_line": 3
+              }
+            ],
+            "semantic_relations": [
+              "unreviewed"
+            ],
+            "skill": "SQL",
+            "source": "evaluation/05/sql.md",
+            "verbatim_and_location_valid": true
+          },
+          {
+            "located_spans": [
+              {
+                "end_line": 3,
+                "start_line": 3
+              }
+            ],
+            "semantic_relations": [
+              "unreviewed"
+            ],
+            "skill": "SQL querying on real business data in production",
+            "source": "evaluation/05/resume.md",
+            "verbatim_and_location_valid": true
+          }
+        ],
+        "evidence_validity": 1.0,
+        "invalid_actions": 0,
+        "normalization_scope": "skill_metrics_only; evidence_and_retrieval_metrics_remain_legacy",
+        "positive_citations_reviewed": 3,
+        "positive_citations_supported": 2,
+        "retrieval_attempts": 1,
+        "retrieval_audit": [
+          {
+            "correct_status_change": false,
+            "new_reviewed_evidence": true,
+            "skill": "SQL",
+            "source": "evaluation/05/sql.md",
+            "useful": true
+          }
+        ],
+        "rules_version": "skill-alignment-v2",
+        "semantic_positive_support": 0.6666666666666666,
+        "semantic_review_coverage": 0.5,
+        "semantic_reviewed": 3,
+        "skill_correct": 1,
+        "skill_status_accuracy": 1.0,
+        "skill_total": 1,
+        "unexpected_skills": 0,
+        "useful_retrieval_rate": 1.0,
+        "useful_retrievals": 1
+      },
+      "original_metrics": {
+        "citation_total": 6,
+        "citation_valid": 6,
+        "duplicate_actions": 0,
+        "duplicate_skill_predictions": 0,
+        "evidence_audit": [
+          {
+            "located_spans": [
+              {
+                "end_line": 3,
+                "start_line": 3
+              }
+            ],
+            "semantic_relations": [
+              "partial"
+            ],
+            "skill": "SQL",
+            "source": "evaluation/05/resume.md",
+            "verbatim_and_location_valid": true
+          },
+          {
+            "located_spans": [
+              {
+                "end_line": 1,
+                "start_line": 1
+              }
+            ],
+            "semantic_relations": [
+              "partial"
+            ],
+            "skill": "SQL",
+            "source": "evaluation/05/sql.md",
+            "verbatim_and_location_valid": true
+          },
+          {
+            "located_spans": [
+              {
+                "end_line": 3,
+                "start_line": 3
+              }
+            ],
+            "semantic_relations": [
+              "limits"
+            ],
+            "skill": "SQL",
+            "source": "evaluation/05/sql.md",
+            "verbatim_and_location_valid": true
+          },
+          {
+            "located_spans": [
+              {
+                "end_line": 3,
+                "start_line": 3
+              }
+            ],
+            "semantic_relations": [
+              "unreviewed"
+            ],
+            "skill": "SQL",
+            "source": "evaluation/05/sql.md",
+            "verbatim_and_location_valid": true
+          },
+          {
+            "located_spans": [
+              {
+                "end_line": 3,
+                "start_line": 3
+              }
+            ],
+            "semantic_relations": [
+              "unreviewed"
+            ],
+            "skill": "SQL",
+            "source": "evaluation/05/sql.md",
+            "verbatim_and_location_valid": true
+          },
+          {
+            "located_spans": [
+              {
+                "end_line": 3,
+                "start_line": 3
+              }
+            ],
+            "semantic_relations": [
+              "unreviewed"
+            ],
+            "skill": "SQL querying on real business data in production",
+            "source": "evaluation/05/resume.md",
+            "verbatim_and_location_valid": true
+          }
+        ],
+        "evidence_validity": 1.0,
+        "invalid_actions": 0,
+        "positive_citations_reviewed": 3,
+        "positive_citations_supported": 2,
+        "retrieval_attempts": 1,
+        "retrieval_audit": [
+          {
+            "correct_status_change": false,
+            "new_reviewed_evidence": true,
+            "skill": "SQL",
+            "source": "evaluation/05/sql.md",
+            "useful": true
+          }
+        ],
+        "semantic_positive_support": 0.6666666666666666,
+        "semantic_review_coverage": 0.5,
+        "semantic_reviewed": 3,
+        "skill_correct": 1,
+        "skill_status_accuracy": 0.5,
+        "skill_total": 2,
+        "unexpected_skills": 1,
+        "useful_retrieval_rate": 1.0,
+        "useful_retrievals": 1
+      },
+      "run": {
+        "authorized_sources": [
+          "evaluation/05/sql.md"
+        ],
+        "budgets": {
+          "max_requests": 12,
+          "max_rounds": 5,
+          "max_searches": 3,
+          "resume_rounds": 2
+        },
+        "case_id": "05",
+        "changes": [
+          {
+            "after": "partial",
+            "before": "partial",
+            "round": 1,
+            "score_after": 25.0,
+            "score_before": 25.0,
+            "skill": "SQL"
+          }
+        ],
+        "citations_verified_by_method": true,
+        "condition": "as_configured",
+        "cost": {
+          "api_requests": 3,
+          "llm_requests": 3,
+          "token_usage": {
+            "completion_tokens": 361,
+            "prompt_tokens": 1722,
+            "total_tokens": 2083
+          },
+          "usage_requests_available": 3
+        },
+        "initial_checkpoint_fingerprint": "502771151f010ea3068fcecd3bf805e1ac09f10172769c93b38407d962ac6e45",
+        "initial_states": {
+          "SQL": "partial",
+          "SQL querying on real business data in production": "not_found"
+        },
+        "injected_fault": null,
+        "input_fingerprint": "d353ab1fd7b6489eee5ad1552fb4b28751628b4e5e9b1ffbd1b8233a292dadb9",
+        "interactions": [
+          {
+            "context": {
+              "category": "required",
+              "reason": "Deterministic fixed workflow policy; not an LLM decision.",
+              "resume_rounds_available": 2,
+              "searches_remaining": 2,
+              "skill": "SQL",
+              "status": "partial"
+            },
+            "question": "Can you provide candidate-owned SQL project evidence?",
+            "reply": "I have no real business project document to authorize.",
+            "verified": false
+          }
+        ],
+        "latency_seconds": 5.542328416835517,
+        "method": "fixed",
+        "mode": "real",
+        "model": "deepseek-flash",
+        "model_outputs": [
+          {
+            "error_code": null,
+            "request": 1,
+            "response": {
+              "final_answer": "{\"title\":\"Business Data Intern\",\"company\":\"\",\"required_skills\":[\"SQL\",\"SQL querying on real business data in production\"],\"preferred_skills\":[],\"needs_verification\":[]}",
+              "tool_calls": []
+            },
+            "stage": "jd_extraction",
+            "usage": {
+              "completion_tokens": 43,
+              "prompt_tokens": 332,
+              "total_tokens": 375
+            }
+          },
+          {
+            "error_code": null,
+            "request": 2,
+            "response": {
+              "final_answer": "{\"assessments\":[{\"skill\":\"SQL\",\"status\":\"partial\",\"quotes\":[\"I completed a basic SQL tutorial.\"],\"reasoning\":\"简历仅提到完成基础 SQL 教程，能证明入门学习，但没有任何材料表明在实际场景中使用 SQL 的能力。\"},{\"skill\":\"SQL querying on real business data in production\",\"status\":\"not_found\",\"quotes\":[\"I completed a basic SQL tutorial.\"],\"reasoning\":\"岗位要求 SQL 查询需包含真实生产业务数据的经验；简历只有基础教程学习记录，未提及真实业务数据、生产环境或任何查询实践。\"}]}",
+              "tool_calls": []
+            },
+            "stage": "initial_assessment",
+            "usage": {
+              "completion_tokens": 123,
+              "prompt_tokens": 499,
+              "total_tokens": 622
+            }
+          },
+          {
+            "error_code": null,
+            "request": 3,
+            "response": {
+              "final_answer": "{\"skill\": \"SQL\", \"status\": \"partial\", \"citations\": [{\"source\": \"evaluation/05/sql.md\", \"quote\": \"I wrote SQL JOIN and GROUP BY queries and checked the returned rows.\"}, {\"source\": \"evaluation/05/sql.md\", \"quote\": \"The project used synthetic data and was not deployed to production.\"}, {\"source\": \"evaluation/05/resume.md\", \"quote\": \"I completed a basic SQL tutorial.\"}], \"reasoning\": \"文件显示该候选人具备 SQL 实践：编写并核验过 JOIN 和 GROUP BY 查询，这支持 SQL 查询技能本身。但岗位还要求在生产环境中使用真实业务数据进行 SQL 查询，而文件明确说明所用项目为合成数据且未部署到生产，因此该子要求未获满足。综合判断为 partial，而非因基础教程或缺乏生产数据否定其 SQL 查询能力。\"}",
+              "tool_calls": []
+            },
+            "stage": "supplemental_assessment",
+            "usage": {
+              "completion_tokens": 195,
+              "prompt_tokens": 891,
+              "total_tokens": 1086
+            }
+          }
+        ],
+        "predictions": [
+          {
+            "citations": [
+              {
+                "end_line": 3,
+                "quote": "I completed a basic SQL tutorial.",
+                "resume_sha256": "9736e5dc4c625d9e30ce0c71b4caa695f14c1976217ea644a4f0380951e633c5",
+                "source": "evaluation/05/resume.md",
+                "start_line": 3
+              },
+              {
+                "end_line": 1,
+                "quote": "I wrote SQL JOIN and GROUP BY queries and checked the returned rows.",
+                "resume_sha256": "c1f01e5d8e897b58c816bfadcf1e1caa19da4480fdc473ff3adb39df0078d6f4",
+                "source": "evaluation/05/sql.md",
+                "start_line": 1
+              },
+              {
+                "end_line": 3,
+                "quote": "The project used synthetic data and was not deployed to production.",
+                "resume_sha256": "c1f01e5d8e897b58c816bfadcf1e1caa19da4480fdc473ff3adb39df0078d6f4",
+                "source": "evaluation/05/sql.md",
+                "start_line": 3
+              },
+              {
+                "end_line": 3,
+                "quote": "The project used synthetic data",
+                "resume_sha256": "c1f01e5d8e897b58c816bfadcf1e1caa19da4480fdc473ff3adb39df0078d6f4",
+                "source": "evaluation/05/sql.md",
+                "start_line": 3
+              },
+              {
+                "end_line": 3,
+                "quote": "was not deployed to production",
+                "resume_sha256": "c1f01e5d8e897b58c816bfadcf1e1caa19da4480fdc473ff3adb39df0078d6f4",
+                "source": "evaluation/05/sql.md",
+                "start_line": 3
+              }
+            ],
+            "skill": "SQL",
+            "status": "partial"
+          },
+          {
+            "citations": [
+              {
+                "end_line": 3,
+                "quote": "I completed a basic SQL tutorial.",
+                "resume_sha256": "9736e5dc4c625d9e30ce0c71b4caa695f14c1976217ea644a4f0380951e633c5",
+                "source": "evaluation/05/resume.md",
+                "start_line": 3
+              }
+            ],
+            "skill": "SQL querying on real business data in production",
+            "status": "not_found"
+          }
+        ],
+        "raw_model_output": null,
+        "reason": "Deterministic fixed workflow policy; not an LLM decision.",
+        "retrievals": [
+          {
+            "candidates": [
+              {
+                "context": "I wrote SQL JOIN and GROUP BY queries and checked the returned rows.",
+                "line_number": 1,
+                "sha256": "c1f01e5d8e897b58c816bfadcf1e1caa19da4480fdc473ff3adb39df0078d6f4",
+                "source": "evaluation/05/sql.md",
+                "text": "I wrote SQL JOIN and GROUP BY queries and checked the returned rows."
+              }
+            ],
+            "error_code": null,
+            "round": 1,
+            "skill": "SQL",
+            "source": "evaluation/05/sql.md",
+            "success": true
+          }
+        ],
+        "scenario": "partial_requirement",
+        "score": 25.0,
+        "status": "finished",
+        "trace": [
+          {
+            "action": "SEARCH",
+            "candidate_count": null,
+            "error_code": null,
+            "event": "decision",
+            "round": 1,
+            "skill": "SQL",
+            "status": null,
+            "success": null
+          },
+          {
+            "action": "SEARCH",
+            "candidate_count": 1,
+            "error_code": null,
+            "event": "search",
+            "round": 1,
+            "skill": "SQL",
+            "status": null,
+            "success": true
+          },
+          {
+            "action": null,
+            "candidate_count": null,
+            "error_code": null,
+            "event": "reevaluation",
+            "round": 1,
+            "skill": "SQL",
+            "status": null,
+            "success": true
+          },
+          {
+            "action": "ASK_USER",
+            "candidate_count": null,
+            "error_code": null,
+            "event": "decision",
+            "round": 2,
+            "skill": "SQL",
+            "status": null,
+            "success": null
+          },
+          {
+            "action": null,
+            "candidate_count": null,
+            "error_code": null,
+            "event": "termination",
+            "round": 2,
+            "skill": null,
+            "status": "waiting_for_user",
+            "success": null
+          },
+          {
+            "action": null,
+            "candidate_count": null,
+            "error_code": null,
+            "event": "user_reply",
+            "round": 2,
+            "skill": null,
+            "status": null,
+            "success": true
+          },
+          {
+            "action": "FINISH",
+            "candidate_count": null,
+            "error_code": null,
+            "event": "decision",
+            "round": 3,
+            "skill": null,
+            "status": null,
+            "success": null
+          },
+          {
+            "action": null,
+            "candidate_count": null,
+            "error_code": null,
+            "event": "termination",
+            "round": 3,
+            "skill": null,
+            "status": "finished",
+            "success": null
+          }
+        ]
+      }
+    },
+    {
+      "metrics": {
+        "alignment": {
+          "judgments": [
+            {
+              "condition_indices": [
+                1
+              ],
+              "primary_indices": [
+                0
+              ],
+              "reason": "conservative_condition_composition",
+              "required_conditions": [
+                "production",
+                "real_business_data"
+              ],
+              "skill": "SQL",
+              "status": "partial"
+            }
+          ],
+          "mappings": [
+            {
+              "conditions": [],
+              "index": 0,
+              "key": "sql",
+              "kind": "skill",
+              "normalized_skill": "SQL",
+              "original_skill": "SQL querying",
+              "reason": "declared_full_name_alias",
+              "status": "partial"
+            },
+            {
+              "conditions": [
+                "real_business_data",
+                "production"
+              ],
+              "index": 1,
+              "key": "sql",
+              "kind": "condition",
+              "normalized_skill": "SQL",
+              "original_skill": "real business data in production",
+              "reason": "declared_condition_and_explicit_JD_binding",
+              "status": "not_found"
+            }
+          ],
+          "unexpected_keys": []
+        },
+        "citation_total": 5,
+        "citation_valid": 5,
+        "duplicate_actions": 0,
+        "duplicate_skill_predictions": 0,
+        "evidence_audit": [
+          {
+            "located_spans": [
+              {
+                "end_line": 3,
+                "start_line": 3
+              }
+            ],
+            "semantic_relations": [
+              "unreviewed"
+            ],
+            "skill": "SQL querying",
+            "source": "evaluation/05/resume.md",
+            "verbatim_and_location_valid": true
+          },
+          {
+            "located_spans": [
+              {
+                "end_line": 1,
+                "start_line": 1
+              }
+            ],
+            "semantic_relations": [
+              "unreviewed"
+            ],
+            "skill": "SQL querying",
+            "source": "evaluation/05/sql.md",
+            "verbatim_and_location_valid": true
+          },
+          {
+            "located_spans": [
+              {
+                "end_line": 3,
+                "start_line": 3
+              }
+            ],
+            "semantic_relations": [
+              "unreviewed"
+            ],
+            "skill": "SQL querying",
+            "source": "evaluation/05/sql.md",
+            "verbatim_and_location_valid": true
+          },
+          {
+            "located_spans": [
+              {
+                "end_line": 3,
+                "start_line": 3
+              }
+            ],
+            "semantic_relations": [
+              "unreviewed"
+            ],
+            "skill": "SQL querying",
+            "source": "evaluation/05/sql.md",
+            "verbatim_and_location_valid": true
+          },
+          {
+            "located_spans": [
+              {
+                "end_line": 3,
+                "start_line": 3
+              }
+            ],
+            "semantic_relations": [
+              "unreviewed"
+            ],
+            "skill": "SQL querying",
+            "source": "evaluation/05/sql.md",
+            "verbatim_and_location_valid": true
+          }
+        ],
+        "evidence_validity": 1.0,
+        "invalid_actions": 0,
+        "normalization_scope": "skill_metrics_only; evidence_and_retrieval_metrics_remain_legacy",
+        "positive_citations_reviewed": 0,
+        "positive_citations_supported": 0,
+        "retrieval_attempts": 2,
+        "retrieval_audit": [
+          {
+            "correct_status_change": false,
+            "new_reviewed_evidence": false,
+            "skill": "SQL querying",
+            "source": "evaluation/05/sql.md",
+            "useful": false
+          },
+          {
+            "correct_status_change": false,
+            "new_reviewed_evidence": false,
+            "skill": "real business data in production",
+            "source": "evaluation/05/sql.md",
+            "useful": false
+          }
+        ],
+        "rules_version": "skill-alignment-v2",
+        "semantic_positive_support": null,
+        "semantic_review_coverage": 0.0,
+        "semantic_reviewed": 0,
+        "skill_correct": 1,
+        "skill_status_accuracy": 1.0,
+        "skill_total": 1,
+        "unexpected_skills": 0,
+        "useful_retrieval_rate": 0.0,
+        "useful_retrievals": 0
+      },
+      "original_metrics": {
+        "citation_total": 5,
+        "citation_valid": 5,
+        "duplicate_actions": 0,
+        "duplicate_skill_predictions": 0,
+        "evidence_audit": [
+          {
+            "located_spans": [
+              {
+                "end_line": 3,
+                "start_line": 3
+              }
+            ],
+            "semantic_relations": [
+              "unreviewed"
+            ],
+            "skill": "SQL querying",
+            "source": "evaluation/05/resume.md",
+            "verbatim_and_location_valid": true
+          },
+          {
+            "located_spans": [
+              {
+                "end_line": 1,
+                "start_line": 1
+              }
+            ],
+            "semantic_relations": [
+              "unreviewed"
+            ],
+            "skill": "SQL querying",
+            "source": "evaluation/05/sql.md",
+            "verbatim_and_location_valid": true
+          },
+          {
+            "located_spans": [
+              {
+                "end_line": 3,
+                "start_line": 3
+              }
+            ],
+            "semantic_relations": [
+              "unreviewed"
+            ],
+            "skill": "SQL querying",
+            "source": "evaluation/05/sql.md",
+            "verbatim_and_location_valid": true
+          },
+          {
+            "located_spans": [
+              {
+                "end_line": 3,
+                "start_line": 3
+              }
+            ],
+            "semantic_relations": [
+              "unreviewed"
+            ],
+            "skill": "SQL querying",
+            "source": "evaluation/05/sql.md",
+            "verbatim_and_location_valid": true
+          },
+          {
+            "located_spans": [
+              {
+                "end_line": 3,
+                "start_line": 3
+              }
+            ],
+            "semantic_relations": [
+              "unreviewed"
+            ],
+            "skill": "SQL querying",
+            "source": "evaluation/05/sql.md",
+            "verbatim_and_location_valid": true
+          }
+        ],
+        "evidence_validity": 1.0,
+        "invalid_actions": 0,
+        "positive_citations_reviewed": 0,
+        "positive_citations_supported": 0,
+        "retrieval_attempts": 2,
+        "retrieval_audit": [
+          {
+            "correct_status_change": false,
+            "new_reviewed_evidence": false,
+            "skill": "SQL querying",
+            "source": "evaluation/05/sql.md",
+            "useful": false
+          },
+          {
+            "correct_status_change": false,
+            "new_reviewed_evidence": false,
+            "skill": "real business data in production",
+            "source": "evaluation/05/sql.md",
+            "useful": false
+          }
+        ],
+        "semantic_positive_support": null,
+        "semantic_review_coverage": 0.0,
+        "semantic_reviewed": 0,
+        "skill_correct": 0,
+        "skill_status_accuracy": 0.0,
+        "skill_total": 3,
+        "unexpected_skills": 2,
+        "useful_retrieval_rate": 0.0,
+        "useful_retrievals": 0
+      },
+      "run": {
+        "authorized_sources": [
+          "evaluation/05/sql.md"
+        ],
+        "budgets": {
+          "max_requests": 12,
+          "max_rounds": 5,
+          "max_searches": 3,
+          "resume_rounds": 2
+        },
+        "case_id": "05",
+        "changes": [
+          {
+            "after": "partial",
+            "before": "partial",
+            "round": 1,
+            "score_after": 25.0,
+            "score_before": 25.0,
+            "skill": "SQL querying"
+          }
+        ],
+        "citations_verified_by_method": true,
+        "condition": "as_configured",
+        "cost": {
+          "api_requests": 7,
+          "llm_requests": 7,
+          "token_usage": {
+            "completion_tokens": 724,
+            "prompt_tokens": 6542,
+            "total_tokens": 7266
+          },
+          "usage_requests_available": 7
+        },
+        "initial_checkpoint_fingerprint": "ea821dc96f51d508848fdac0eeb518d1b86d4cbb18eddaa84e3b4fff210c1d91",
+        "initial_states": {
+          "SQL querying": "partial",
+          "real business data in production": "not_found"
+        },
+        "injected_fault": null,
+        "input_fingerprint": "d353ab1fd7b6489eee5ad1552fb4b28751628b4e5e9b1ffbd1b8233a292dadb9",
+        "interactions": [
+          {
+            "context": {
+              "category": "required",
+              "reason": "现有授权材料已检索完毕且无可用搜索来源；两项必需技能证据不足，其中 SQL querying 为 partial，需向用户核实实践细节，不应将简历缺证视为不具备技能。",
+              "resume_rounds_available": 2,
+              "searches_remaining": 1,
+              "skill": "SQL querying",
+              "status": "partial"
+            },
+            "question": "请说明你在实际工作或项目中用 SQL 做过哪些查询与分析（例如数据量、复杂 join/聚合、性能优化），并提供可佐证的项目或成果细节。",
+            "reply": "I have no real business project document to authorize.",
+            "verified": false
+          }
+        ],
+        "latency_seconds": 12.699361416976899,
+        "method": "agent",
+        "mode": "real",
+        "model": "deepseek-flash",
+        "model_outputs": [
+          {
+            "error_code": null,
+            "request": 1,
+            "response": {
+              "final_answer": "{\"title\":\"Business Data Intern\",\"company\":\"\",\"required_skills\":[\"SQL querying\",\"real business data in production\"],\"preferred_skills\":[],\"needs_verification\":[\"实习期限\",\"到岗时间\",\"学历要求\"]}",
+              "tool_calls": []
+            },
+            "stage": "jd_extraction",
+            "usage": {
+              "completion_tokens": 51,
+              "prompt_tokens": 332,
+              "total_tokens": 383
+            }
+          },
+          {
+            "error_code": null,
+            "request": 2,
+            "response": {
+              "final_answer": "{\"assessments\":[{\"skill\":\"SQL querying\",\"status\":\"partial\",\"quotes\":[\"I completed a basic SQL tutorial.\"],\"reasoning\":\"The resume shows only foundational learning through a basic tutorial. There is no evidence of applied querying practice or use in any setting, so only basic learning is supported, not actual querying experience.\"},{\"skill\":\"real business data in production\",\"status\":\"not_found\",\"quotes\":[],\"reasoning\":\"The resume contains no reference to business data, production systems, or any work with real data. The only SQL-related item is a basic tutorial, which does not address production business data.\"}]}",
+              "tool_calls": []
+            },
+            "stage": "initial_assessment",
+            "usage": {
+              "completion_tokens": 132,
+              "prompt_tokens": 497,
+              "total_tokens": 629
+            }
+          },
+          {
+            "error_code": null,
+            "request": 3,
+            "response": {
+              "final_answer": "{\"action\": \"SEARCH\", \"reason\": \"SQL querying 是必需要技能且当前为 partial，授权材料 evaluation/05/sql.md 可低成本直接检索，优先补齐证据。\", \"skill\": \"SQL querying\", \"source\": \"evaluation/05/sql.md\", \"question\": null}",
+              "tool_calls": []
+            },
+            "stage": "action_decision",
+            "usage": {
+              "completion_tokens": 68,
+              "prompt_tokens": 1136,
+              "total_tokens": 1204
+            }
+          },
+          {
+            "error_code": null,
+            "request": 4,
+            "response": {
+              "final_answer": "{\"skill\": \"SQL querying\", \"status\": \"partial\", \"citations\": [{\"source\": \"evaluation/05/sql.md\", \"quote\": \"I wrote SQL JOIN and GROUP BY queries and checked the returned rows.\"}, {\"source\": \"evaluation/05/sql.md\", \"quote\": \"The project used synthetic data and was not deployed to production.\"}, {\"source\": \"evaluation/05/resume.md\", \"quote\": \"I completed a basic SQL tutorial.\"}], \"reasoning\": \"The candidate demonstrates hands-on SQL querying practice, having written JOIN and GROUP BY queries and validated returned rows, which supports the SQL querying component of the requirement. However, the job explicitly requires SQL querying with real business data in production, and the documented project used synthetic data and was not deployed to production. There is also only foundational learning from a basic tutorial. Thus querying practice is evidenced, but the production real-business-data subrequirement is unmet, so the overall assessment is partial rather than not_found or uncertain; there is no negation of the SQL skill itself.\"}",
+              "tool_calls": []
+            },
+            "stage": "supplemental_assessment",
+            "usage": {
+              "completion_tokens": 227,
+              "prompt_tokens": 908,
+              "total_tokens": 1135
+            }
+          },
+          {
+            "error_code": null,
+            "request": 5,
+            "response": {
+              "final_answer": "{\"action\": \"SEARCH\", \"reason\": \"SQL 查询为部分匹配，且生产业务数据为必需要求但尚未找到；授权材料中仍有一个未搜索的具体技能/来源组合可核实。\", \"skill\": \"real business data in production\", \"source\": \"evaluation/05/sql.md\", \"question\": null}",
+              "tool_calls": []
+            },
+            "stage": "action_decision",
+            "usage": {
+              "completion_tokens": 73,
+              "prompt_tokens": 1204,
+              "total_tokens": 1277
+            }
+          },
+          {
+            "error_code": null,
+            "request": 6,
+            "response": {
+              "final_answer": "{\"action\": \"ASK_USER\", \"reason\": \"现有授权材料已检索完毕且无可用搜索来源；两项必需技能证据不足，其中 SQL querying 为 partial，需向用户核实实践细节，不应将简历缺证视为不具备技能。\", \"skill\": \"SQL querying\", \"question\": \"请说明你在实际工作或项目中用 SQL 做过哪些查询与分析（例如数据量、复杂 join/聚合、性能优化），并提供可佐证的项目或成果细节。\", \"source\": null}",
+              "tool_calls": []
+            },
+            "stage": "action_decision",
+            "usage": {
+              "completion_tokens": 108,
+              "prompt_tokens": 1229,
+              "total_tokens": 1337
+            }
+          },
+          {
+            "error_code": null,
+            "request": 7,
+            "response": {
+              "final_answer": "{\"action\": \"FINISH\", \"reason\": \"没有剩余的可用检索来源，也没有授权进一步搜索；SQL querying 已部分核实，而 real business data in production 没有可佐证的材料。不支持的询问方式限制也使我无法再为这些缺口请求用户提供更多证据，因此停止。\"}",
+              "tool_calls": []
+            },
+            "stage": "action_decision",
+            "usage": {
+              "completion_tokens": 65,
+              "prompt_tokens": 1236,
+              "total_tokens": 1301
+            }
+          }
+        ],
+        "predictions": [
+          {
+            "citations": [
+              {
+                "end_line": 3,
+                "quote": "I completed a basic SQL tutorial.",
+                "resume_sha256": "9736e5dc4c625d9e30ce0c71b4caa695f14c1976217ea644a4f0380951e633c5",
+                "source": "evaluation/05/resume.md",
+                "start_line": 3
+              },
+              {
+                "end_line": 1,
+                "quote": "I wrote SQL JOIN and GROUP BY queries and checked the returned rows.",
+                "resume_sha256": "c1f01e5d8e897b58c816bfadcf1e1caa19da4480fdc473ff3adb39df0078d6f4",
+                "source": "evaluation/05/sql.md",
+                "start_line": 1
+              },
+              {
+                "end_line": 3,
+                "quote": "The project used synthetic data and was not deployed to production.",
+                "resume_sha256": "c1f01e5d8e897b58c816bfadcf1e1caa19da4480fdc473ff3adb39df0078d6f4",
+                "source": "evaluation/05/sql.md",
+                "start_line": 3
+              },
+              {
+                "end_line": 3,
+                "quote": "The project used synthetic data",
+                "resume_sha256": "c1f01e5d8e897b58c816bfadcf1e1caa19da4480fdc473ff3adb39df0078d6f4",
+                "source": "evaluation/05/sql.md",
+                "start_line": 3
+              },
+              {
+                "end_line": 3,
+                "quote": "was not deployed to production",
+                "resume_sha256": "c1f01e5d8e897b58c816bfadcf1e1caa19da4480fdc473ff3adb39df0078d6f4",
+                "source": "evaluation/05/sql.md",
+                "start_line": 3
+              }
+            ],
+            "skill": "SQL querying",
+            "status": "partial"
+          },
+          {
+            "citations": [],
+            "skill": "real business data in production",
+            "status": "not_found"
+          }
+        ],
+        "raw_model_output": null,
+        "reason": "没有剩余的可用检索来源，也没有授权进一步搜索；SQL querying 已部分核实，而 real business data in production 没有可佐证的材料。不支持的询问方式限制也使我无法再为这些缺口请求用户提供更多证据，因此停止。",
+        "retrievals": [
+          {
+            "candidates": [
+              {
+                "context": "I wrote SQL JOIN and GROUP BY queries and checked the returned rows.",
+                "line_number": 1,
+                "sha256": "c1f01e5d8e897b58c816bfadcf1e1caa19da4480fdc473ff3adb39df0078d6f4",
+                "source": "evaluation/05/sql.md",
+                "text": "I wrote SQL JOIN and GROUP BY queries and checked the returned rows."
+              }
+            ],
+            "error_code": null,
+            "round": 1,
+            "skill": "SQL querying",
+            "source": "evaluation/05/sql.md",
+            "success": true
+          },
+          {
+            "candidates": [],
+            "error_code": null,
+            "round": 2,
+            "skill": "real business data in production",
+            "source": "evaluation/05/sql.md",
+            "success": true
+          }
+        ],
+        "scenario": "partial_requirement",
+        "score": 25.0,
+        "status": "finished",
+        "trace": [
+          {
+            "action": "SEARCH",
+            "candidate_count": null,
+            "error_code": null,
+            "event": "decision",
+            "round": 1,
+            "skill": "SQL querying",
+            "status": null,
+            "success": null
+          },
+          {
+            "action": "SEARCH",
+            "candidate_count": 1,
+            "error_code": null,
+            "event": "search",
+            "round": 1,
+            "skill": "SQL querying",
+            "status": null,
+            "success": true
+          },
+          {
+            "action": null,
+            "candidate_count": null,
+            "error_code": null,
+            "event": "reevaluation",
+            "round": 1,
+            "skill": "SQL querying",
+            "status": null,
+            "success": true
+          },
+          {
+            "action": "SEARCH",
+            "candidate_count": null,
+            "error_code": null,
+            "event": "decision",
+            "round": 2,
+            "skill": "real business data in production",
+            "status": null,
+            "success": null
+          },
+          {
+            "action": "SEARCH",
+            "candidate_count": 0,
+            "error_code": null,
+            "event": "search",
+            "round": 2,
+            "skill": "real business data in production",
+            "status": null,
+            "success": true
+          },
+          {
+            "action": "ASK_USER",
+            "candidate_count": null,
+            "error_code": null,
+            "event": "decision",
+            "round": 3,
+            "skill": "SQL querying",
+            "status": null,
+            "success": null
+          },
+          {
+            "action": null,
+            "candidate_count": null,
+            "error_code": null,
+            "event": "termination",
+            "round": 3,
+            "skill": null,
+            "status": "waiting_for_user",
+            "success": null
+          },
+          {
+            "action": null,
+            "candidate_count": null,
+            "error_code": null,
+            "event": "user_reply",
+            "round": 3,
+            "skill": null,
+            "status": null,
+            "success": true
+          },
+          {
+            "action": "FINISH",
+            "candidate_count": null,
+            "error_code": null,
+            "event": "decision",
+            "round": 4,
+            "skill": null,
+            "status": null,
+            "success": null
+          },
+          {
+            "action": null,
+            "candidate_count": null,
+            "error_code": null,
+            "event": "termination",
+            "round": 4,
+            "skill": null,
+            "status": "finished",
+            "success": null
+          }
+        ]
+      }
+    }
+  ],
+  "schema_version": 1,
+  "scope": "Only skill-status alignment/composition changes; evidence/retrieval metrics retain legacy rules. Model scores, outputs, verified flags, usage and latency are original observations.",
+  "source_metadata": {
+    "execution_cost": {
+      "agent": {
+        "api_requests": 7,
+        "latency_seconds": 12.699361416976899,
+        "llm_requests": 7,
+        "token_usage": {
+          "completion_tokens": 724,
+          "prompt_tokens": 6542,
+          "total_tokens": 7266
+        }
+      },
+      "fixed": {
+        "api_requests": 3,
+        "latency_seconds": 5.542328416835517,
+        "llm_requests": 3,
+        "token_usage": {
+          "completion_tokens": 361,
+          "prompt_tokens": 1722,
+          "total_tokens": 2083
+        }
+      },
+      "single": {
+        "api_requests": 1,
+        "latency_seconds": 3.506095999851823,
+        "llm_requests": 1,
+        "token_usage": {
+          "completion_tokens": 173,
+          "prompt_tokens": 448,
+          "total_tokens": 621
+        }
+      }
+    },
+    "execution_order": [
+      {
+        "case_id": "05",
+        "condition": "as_configured",
+        "method": "single"
+      },
+      {
+        "case_id": "05",
+        "condition": "as_configured",
+        "method": "fixed"
+      },
+      {
+        "case_id": "05",
+        "condition": "as_configured",
+        "method": "agent"
+      }
+    ],
+    "generation_settings": {
+      "max_tokens": 1024,
+      "sampling": "provider defaults, independently sampled; no seed",
+      "sdk_retries": 0,
+      "timeout_seconds": 30
+    },
+    "mock_script_fingerprint": null,
+    "policy_ablation": [
+      {
+        "agent_accuracy": 0.0,
+        "agent_requests": 7,
+        "agent_retrievals": 2,
+        "agent_status": "finished",
+        "case_id": "05",
+        "fixed_accuracy": 0.5,
+        "fixed_requests": 3,
+        "fixed_retrievals": 1,
+        "fixed_status": "finished",
+        "same_initial_checkpoint": false,
+        "same_initial_states": false,
+        "same_inputs_grants_budgets": true
+      }
+    ],
+    "request_plan": {
+      "case_ids": [
+        "05"
+      ],
+      "dataset_fingerprint": "8b6061303cda37c88904cead19d77500f9e9ab6405ad7f993ffd1d3b7f46c105",
+      "dataset_version": "gold-v1",
+      "method_order": [
+        "single",
+        "fixed",
+        "agent"
+      ],
+      "mode": "real",
+      "model": "deepseek-flash",
+      "normal_access_controls": false,
+      "per_method_request_caps": {
+        "agent": 12,
+        "fixed": 12,
+        "single": 1
+      },
+      "total_request_cap": 25,
+      "worst_case_request_reservation": 25
+    }
+  },
+  "source_semantic_fingerprint": "08ccea572aa4074dde9e51cdd631dc6a2f4de02aaa40cb313e3b8005a578e666",
+  "source_sha256": "016bee38d19d7a48d3051a35cc96a795455d00b29041385fe183c018dcac296f",
+  "summary": {
+    "agent": {
+      "api_requests": 7,
+      "citation_total": 5,
+      "citation_valid": 5,
+      "duplicate_actions": 0,
+      "duplicate_skill_predictions": 0,
+      "error_rate": 0.0,
+      "evidence_validity": 1.0,
+      "invalid_actions": 0,
+      "latency_seconds": 12.699361416976899,
+      "llm_requests": 7,
+      "positive_citations_reviewed": 0,
+      "positive_citations_supported": 0,
+      "retrieval_attempts": 2,
+      "runs": 1,
+      "semantic_positive_support": null,
+      "semantic_review_coverage": 0.0,
+      "semantic_reviewed": 0,
+      "skill_correct": 1,
+      "skill_status_accuracy": 1.0,
+      "skill_total": 1,
+      "status_counts": {
+        "finished": 1
+      },
+      "task_completion_rate": 1.0,
+      "token_usage": {
+        "completion_tokens": 724,
+        "prompt_tokens": 6542,
+        "total_tokens": 7266
+      },
+      "unexpected_skills": 0,
+      "useful_retrieval_rate": 0.0,
+      "useful_retrievals": 0,
+      "waiting_rate": 0.0
+    },
+    "fixed": {
+      "api_requests": 3,
+      "citation_total": 6,
+      "citation_valid": 6,
+      "duplicate_actions": 0,
+      "duplicate_skill_predictions": 0,
+      "error_rate": 0.0,
+      "evidence_validity": 1.0,
+      "invalid_actions": 0,
+      "latency_seconds": 5.542328416835517,
+      "llm_requests": 3,
+      "positive_citations_reviewed": 3,
+      "positive_citations_supported": 2,
+      "retrieval_attempts": 1,
+      "runs": 1,
+      "semantic_positive_support": 0.6666666666666666,
+      "semantic_review_coverage": 0.5,
+      "semantic_reviewed": 3,
+      "skill_correct": 1,
+      "skill_status_accuracy": 1.0,
+      "skill_total": 1,
+      "status_counts": {
+        "finished": 1
+      },
+      "task_completion_rate": 1.0,
+      "token_usage": {
+        "completion_tokens": 361,
+        "prompt_tokens": 1722,
+        "total_tokens": 2083
+      },
+      "unexpected_skills": 0,
+      "useful_retrieval_rate": 1.0,
+      "useful_retrievals": 1,
+      "waiting_rate": 0.0
+    },
+    "single": {
+      "api_requests": 1,
+      "citation_total": 1,
+      "citation_valid": 1,
+      "duplicate_actions": 0,
+      "duplicate_skill_predictions": 0,
+      "error_rate": 0.0,
+      "evidence_validity": 1.0,
+      "invalid_actions": 0,
+      "latency_seconds": 3.506095999851823,
+      "llm_requests": 1,
+      "positive_citations_reviewed": 1,
+      "positive_citations_supported": 1,
+      "retrieval_attempts": 0,
+      "runs": 1,
+      "semantic_positive_support": 1.0,
+      "semantic_review_coverage": 1.0,
+      "semantic_reviewed": 1,
+      "skill_correct": 1,
+      "skill_status_accuracy": 1.0,
+      "skill_total": 1,
+      "status_counts": {
+        "finished": 1
+      },
+      "task_completion_rate": 1.0,
+      "token_usage": {
+        "completion_tokens": 173,
+        "prompt_tokens": 448,
+        "total_tokens": 621
+      },
+      "unexpected_skills": 0,
+      "useful_retrieval_rate": null,
+      "useful_retrievals": 0,
+      "waiting_rate": 0.0
+    }
+  }
+}
