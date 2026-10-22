@@ -1,6 +1,7 @@
 # AI Internship Agent
 
-当前包含离线工具层、供应商无关的 LLM 接口、轻量 Agent Loop 和基于证据的岗位匹配。
+当前包含离线工具层、供应商无关的 LLM 接口、轻量 Agent Loop、基于证据的岗位匹配，
+以及可暂停恢复的成本约束补充取证。
 使用 Python 3.12、Pydantic 2、pytest，不使用 Agent 框架。
 默认测试与 Mock Demo 均离线；DeepSeek 真实 API Demo 必须显式启动。
 
@@ -324,6 +325,187 @@ LLM 不能通过 tool 参数更换输入、构造验证成功的来源字段、�
 尚无语义结果缓存、大文件截断或 PDF/DOCX 支持。后续可加入人工标注评估集、别名与上下文规则改进，
 以及对 JD 要求遗漏和引用相关性的独立评估，当前不扩展业务范围。
 
+## Day 5：Cost-Aware Autonomous Evidence Gathering
+
+Day 4 先生成不可覆盖的初步报告；Day 5 只对证据缺口补充取证。模型每轮必须返回一个
+`GatheringDecision`，Python 严格验证以下三种行动及其字段，拒绝多余字段和模型自定分数：
+
+| 行动 | 模型提供 | Python 行为 |
+| --- | --- | --- |
+| `SEARCH` | 目标技能、授权 source、简短理由 | 校验目标缺口和文件授权，通过 Registry 检索；有候选才调用模型重新评估 |
+| `ASK_USER` | 目标技能、具体问题、简短理由 | 确认有有限恢复余量后返回 `waiting_for_user`，否则明确停止；不制造无法恢复的等待 |
+| `FINISH` | 简短理由 | 返回 `finished`；允许因为低收益而保留缺口，不表示所有技能已经满足 |
+
+模型决策上下文包含技能类别、原有权重、当前状态、授权文件大小及估算读取单位、已检索组合、
+剩余检索次数、共享模型请求余量、上次工具结果和未经核实的用户回复。
+读取单位为每 KiB 向上取整，是相对成本提示，不是价格或准确 Token 数。
+Python 不强制“必备一定搜索、加分一定结束”，这些选择由模型给出理由；Python 只执行权限、
+格式、目标技能和预算等硬约束。SEARCH/ASK_USER 不能针对未知技能或已经 supported 的技能。
+决策输入另含 `available_searches`、`allowed_actions` 和逐次 `search_history`。
+只有未检索、授权且配额足够的“技能/来源”组合才出现在可搜索列表中；没有组合时，响应 Schema
+不再提供 SEARCH。授权文件列表只是背景信息，不代表仍可重复搜索。
+失败反馈同时说明实际目标技能、来源、错误码和原因，避免只给出脱离上下文的 duplicate_search。
+三种行动的参数契约同时体现在 JSON Schema 的 `oneOf` 与 Pydantic 校验中：
+SEARCH 必填 skill/source，不能带 question；ASK_USER 必填 skill/question（至少 8 字符），
+不能带 source；FINISH 不需要目标，skill/source/question 只能省略或为 null。
+`ask_user_targets` 明确列出所有可询问的 partial/not_found/uncertain 技能；
+检索过且仍 partial 的 SQL 依然可询问，不受 SEARCH 的去重和检索次数限制。
+ASK_USER 必须使用报告中的技能名，不能省略目标或猜测映射。本版本仅支持技能澄清，
+到岗时间等非技能条件不作为合法目标；这类信息继续保留为待核实项，不自动推断满足。
+没有合法 SEARCH 时仅提供 ASK_USER（仍有恢复预算时）或 FINISH。
+
+### 新接口及与现有 Agent 的集成
+
+- `src/evidence_search.py`：`ProjectEvidenceSearch(authorized_sources, max_searches=3)`；
+  `registry()` 显式注册 `search_project_evidence(skill, source)`。
+- `src/autonomy.py`：`BudgetedLLMClient` 统一限制真实 Client 和 Mock 的请求尝试次数；
+  `EvidenceGatheringSession.run()` 执行有限轮数的三行动循环，`resume()` 接收实际用户回复。
+- `start_cost_aware_matching(...)`：先使用未修改的 Day 4 `Agent`、匹配工具和同一个预算 Client
+  生成初步报告，再返回补充取证会话。不存在第二个框架 Agent 或后台任务。
+- `schemas.py`：新增行动、候选证据、补充评估、变化记录、结果与脱敏轨迹模型。
+
+`agent.py`、`matching.py`、DeepSeek 接口及旧工具保持不变。通用 Agent 不承担暂停语义，
+Day 5 会话接管补充阶段的运行状态，避免把 ASK_USER 当作普通成功工具后继续循环。
+报告中同时保留 `initial_report`、当前 `report`、每次评估的 `changes` 和 `trace`。
+
+### 文件授权与检索
+
+授权项必须是 `examples/` 内的具体 TXT/Markdown 文件，不接受目录或 glob。
+相对授权路径以 `examples/` 为根；真实 Demo 默认没有补充文件权限，必须逐项 `--authorize`。
+任意目录、越界路径、隐藏文件及 `.env` 均拒绝。检索参数只有技能和已经授权的 source ID，
+没有可覆盖根目录的字段；模型即使在参数中构造路径也不能获得访问权限。
+
+Python 检查真实路径、符号链接、实际扩展名及单文件 64 KiB 上限，并在读取前重新检查。
+只读取被选择的文件，不扫描其他目录。检索使用现有字面关键词和已知别名规则，返回候选的
+来源、行号、原文、段落上下文和文本 SHA-256，**不会将关键词命中直接判为 supported**。
+搜索过的规范化“文件/技能”组合在同一会话中永久标记；无结果或读取失败也不允许重复检索。
+大小写及已知技能别名不会创建新的检索配额，指向同一文件的授权别名会合并。
+描述性技能名会按现有词表和词边界提取检索关键词，例如 `SQL查询`、`SQL 查询`、`SQL queries`
+均用 SQL 及其别名召回候选，`Python开发` 等表达使用相同机制。不会把 MySQL/NoSQL 当作 SQL，
+无法识别的技能仍按完整原词检索。检索去重和快照查询共用规范化关键词集合，换一种描述不能重复读取；
+含多个已知技能的组合保留所有关键词。此规则也用于补充评估的否定检查，
+但不修改 JD 技能名称、不合并评分要求，也不将较宽的关键词命中直接视为满足完整要求。
+
+### 补充证据与重新评分
+
+有候选结果时，模型仅评估目标技能，返回状态、`source/quote` 引用和理由。
+Python 只接受原简历快照或**该技能实际检索过的授权文件快照**中的逐字引用；不会为了验证引用，
+再去打开模型提到的新文件。未授权、未检索或虚构的来源/片段都不能获得正向分数。
+存在无效引用时 supported/partial 降为 uncertain，其他已核实证据仍保留供查看。
+
+复用 Day 4 的 `validate_quote`、技能别名和 `score_matches`；Day 5 的否定检查进一步限定到子句和目标技能。
+Python 区分“没有 SQL 查询实践”和“没有部署到真实业务/生产环境”：前者是技能否定，后者只是环境限制。
+SQL 实践原文不能仅因同段出现“没有部署”而被取消；若岗位还要求真实业务数据，则该子要求缺证时
+按 partial，而不是自动 uncertain。已有经核验的 partial 不因仅涉及环境的限制降为零；这不产生新的技能能力。
+纯实践要求不因无关的生产限制自动降级。模型提示也明确区分这两类判断，并要求引用限制条件。
+针对技能本身的真实否定/矛盾仍可使分数下降，报告附上来源、行号及否定原文，便于核查。
+只有基础学习证据时最多 partial；若同时有明确项目实践，则不会仅因为还引用了基础课程而一律降级。
+不使用全局分数取最大值，也不承诺分数单调上升。
+所有其他技能、JD 要求和原权重保持不变，分数仍严格由 supported=1、partial=0.5、
+not_found/uncertain=0 的加权规则计算，模型不能直接设置数值。
+
+为兼容 Day 4，每条引用仍复用 `ResumeEvidence`。其中 `source` 为实际文件来源，
+历史字段 `resume_sha256` 在补充引用中表示**该来源文档**的文本快照摘要；报告顶层
+`resume_sha256` 始终表示原始简历，不能把两者混淆。重复引用不重复计分。
+
+### Human-in-the-Loop 与恢复
+
+```python
+from src.autonomy import start_cost_aware_matching
+
+# client 可以是已有 DeepSeekLLMClient，也可以是 MockLLMClient。
+session = start_cost_aware_matching(
+    client, "examples/matching_resume.md", jd_text,
+    authorized_sources=["projects/sql_project.md"], max_llm_requests=12,
+)
+result = session.run()
+if result.status == "waiting_for_user":
+    # 展示 result.question 和 result.context，等待实际用户回复。
+    result = session.resume(actual_user_answer)
+```
+
+waiting 状态下再次 `run()` 不产生模型请求，也不假装完成。没有非空用户回答不能恢复；
+非 waiting 状态不能调用 `resume()`。用户回复明确标为未经核实的线索，不加入文档证据库，
+不能凭一句“我会 SQL”获得分数，回复中的文件路径也不自动授权。
+
+如用户另外明确授权了文件，由应用单独传入
+`session.resume(answer, additional_sources=["projects/another.md"])`。
+该参数仍经过相同根目录和文件校验，与自然语言回答严格分开。
+恢复沿用原会话的累计轮数、请求数、检索数、快照与重复记录，不退还已用配额。
+首次有效回复获得一次性恢复窗口，默认最多 **2 轮新决策**，同时受原共享请求预算剩余量约束。
+即使 ASK_USER 是初始阶段最后一轮，也有机会在该窗口内完成决策。
+窗口只能使用一次，不会因反复提问或回复而重置；再次 ASK_USER 会明确停止，而非继续等待。
+可通过 `resume_rounds=0/1/2` 配置 `EvidenceGatheringSession` 或 `start_cost_aware_matching`，
+0 表示不允许进入需要恢复的等待状态。
+会话目前只保存在内存，不能在进程退出后持久化恢复。
+
+### 预算、状态与轨迹
+
+默认初始自主阶段最多 **5 轮**，首次用户回复后最多 **2 轮恢复决策**，总计不超过 7 轮；
+早于第 5 轮回复也只获得两轮恢复窗口，不累加未用初始轮数。最多 **3 次补充检索**（可设置 0–3），
+完整流程共享 **12 次 LLM 请求尝试**，包含初步匹配、行动决策、补充评估及失败请求。
+有候选的一次 SEARCH 需要一次额外模型评估，无候选跳过评估，节省请求。
+SEARCH 在没有评估余量时不会读取文件；SDK 仍禁用自动重试。
+调用预算不是精确货币上限，输入文本同样可能计费。
+
+重复搜索或检索配额耗尽会反馈完整的目标/来源/原因，让模型在剩余轮数内改选 ASK_USER/FINISH；
+连续两次忽略约束请求无效检索，以 `model_error/no_progress` 停止，不再消耗整段预算死循环，
+也不由 Python 擅自伪造 FINISH。
+行动 JSON/字段不合法或目标无效时，反馈 `invalid_action_arguments` / `invalid_target`
+和合法目标列表，让模型在现有预算内纠正。整个会话最多给出两次纠正机会，用户恢复不重置；
+第三次无效决策返回 `model_error/invalid_decision_limit`。每次纠正占用原有轮数和共享请求预算，
+可提前因 `step_limit` / `budget_exhausted` 停止。模型请求异常仍直接终止；证据评估格式错误
+也不会被当作可纠正的行动错误。反馈与轨迹不复制原始非法参数或异常内容。
+权限错误立即以 `permission_denied` 停止，不尝试重构路径。
+无结果不能无限重试。其他终止状态包括 `tool_error`、`model_error`、`budget_exhausted`、
+`step_limit`，它们不等于 FINISH；已取得的进展仍保留在报告中。
+等待仍消耗当前决策轮；没有任何共享请求余量或一次性窗口已用完时不进入 waiting。
+若预算被其他调用在等待期间耗尽，恢复返回明确的 `budget_exhausted` 原因；
+窗口用完则返回 `step_limit`。用户回复依然不能直接当作已验证文件证据。
+
+脱敏 `trace` 仅包含轮次、行动、已知目标技能、检索成功与否、候选数量、错误码和状态。
+不包含原始路径、引用全文、行动自由理由、用户回答、SDK 异常或密钥。
+`report`、`initial_report` 和 pending 问题上下文是任务产物，可能含授权文本，不能当作日志整体记录。
+
+### 离线和真实 Demo
+
+```sh
+.venv/bin/python -m examples.demo_autonomous_evidence
+```
+
+默认离线演示三个基本 Mock 场景及一次真实日志模式的可靠性复现，预设决策不代表真实自主推理；
+检索、引用验证、评分和状态转换实际执行：
+
+- A：必备 SQL 缺证，授权项目存在原文 → SEARCH → 核验后重新评分 → FINISH，0 → 100。
+- B：必备 SQL 缺证且无授权材料 → ASK_USER → waiting_for_user；收到无文件佐证的回复后，
+  FINISH 仍为 0 分，不用用户陈述冒充证据。
+- C：仅缺低优先级加分项且无材料 → FINISH，不浪费检索和评估请求。
+- D：SQL 实践与虚构数据/未部署说明混合，分数维持 70；一次重复 SEARCH 被拦截后 ASK_USER，
+  在初始阶段最后一轮提问，收到实际回答后仍能进入有限恢复窗口并 FINISH，用户陈述不加分。
+- E：真实本地工具依次 SEARCH SQL/Docker/PyTorch（候选 1/0/0）；Mock 故意使用非法的
+  “到岗时间”目标，收到结构化错误后改为询问仍 partial 的 SQL，进入等待并在回复后有限恢复。
+
+真实模式必须安全导出 `DEEPSEEK_API_KEY` 并由用户手动执行：
+
+```sh
+.venv/bin/python -m examples.demo_autonomous_evidence --deepseek --run --authorize projects/sql_project.md
+```
+
+可重复 `--authorize` 授予单个文件；不传时为无补充材料场景。`--model` 可指定可用的非思考模型。
+支持 `--max-calls 8/12/16`、`--max-rounds 3/5/7`、`--max-searches 0/1/2/3`。
+`--max-rounds` 限制初始阶段，恢复另有上述一次性两轮窗口，`--max-calls` 不因此增加。
+单次模型最大输出 2048 Token，真实 Client 与跨阶段预算设置为相同请求上限。
+需要在同一进程看到问题后输入一次实际回复时添加 `--interactive`；留空则保持等待。
+也可通过 `--answer` 传入真实用户提供的回答，仅当出现 ASK_USER 时使用，两种方式互斥。
+不带付费模式时不导入或构造 DeepSeek Client；`--deepseek` 缺少 `--run` 也不会发请求。
+本次未运行真实付费 Demo。
+
+当前局限：关键词检索可能遗漏语义改写；原文存在不等于相关性和内容真实性得到证明；
+否定检查可能混淆历史时间变化或同段其他技能。材料授权依赖可信本地应用配置，
+不提供抵御恶意并发文件替换的操作系统级原子隔离。读取成本只有粗略单位，没有金额估算或实时 Token 预算。
+恢复不持久化，不能从 CLI 新进程接续旧会话。后续可改进成本估算和人工确认体验，
+本次不开展 Day 6 评测或引入新的业务范围。
+
 ## 离线测试
 
 在已安装 Pydantic 2 和 pytest 的 Python 3.12 环境运行：
@@ -342,6 +524,8 @@ DeepSeek 测试使用 Fake SDK、真实 SDK 响应类型及合成异常，不读
 匹配测试覆盖原文定位、虚构引用、否定/矛盾、部分匹配、去重、权重、分数边界、空要求和非法输出，
 并用共享 Mock 与 Fake SDK 验证完整 Agent + 语义调用流程、预算和 Demo。
 测试中的 Demo 均注入 Fake SDK，不会启动真实付费请求。
+Day 5 新测试覆盖三类行动、授权路径和符号链接、重复检索、虚构/否定证据、评分变化、等待与恢复、
+共享模型预算、跨恢复轮数限制，以及初步 Agent 与自主阶段集成。离线 Demo 不需要 SDK 或 API Key。
 
 ## 设计限制
 
@@ -353,7 +537,7 @@ DeepSeek 测试使用 Fake SDK、真实 SDK 响应类型及合成异常，不读
 不自动证明回答正确或用户目标已经实质达成。
 DeepSeek 适配器目前仅支持同步、非流式、非思考的函数调用；不启用服务商 Beta strict 模式，
 工具参数仍由本地 Pydantic 验证。不实现请求自动重试或整体货币预算；
-单工具真实接入已由用户验证，本次未执行新的匹配流程真实调用。
+既有 DeepSeek 真实调用已由用户验证，本次未执行 Day 5 的任何付费请求。
 
 后续对接 Gemini 或 Ollama 时，实现满足 `LLMClient.complete()` 的适配器：
 将中立消息和 `ToolSchema` 转换为供应商请求，将最终文本或一个/多个工具请求转换为

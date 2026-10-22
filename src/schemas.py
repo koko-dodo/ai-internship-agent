@@ -189,3 +189,103 @@ class EvidenceMatchReport(MatchingModel):
 
 class MatchResumeToJobArguments(ToolArguments):
     """No arguments: resume path, JD and allowed directory are bound by the app."""
+
+
+class SearchProjectEvidenceArguments(ToolArguments):
+    skill: NonblankText
+    source: NonblankText
+
+
+class ProjectEvidenceCandidate(MatchingModel):
+    source: str
+    line_number: int = Field(ge=1)
+    text: str
+    context: str
+    sha256: str
+
+
+class ProjectSearchResult(MatchingModel):
+    skill: str
+    source: str
+    candidates: list[ProjectEvidenceCandidate]
+
+
+class GatheringDecision(MatchingModel):
+    # Publish the same action-specific contract enforced below. Nullable fields
+    # alone do not tell a model which arguments each action requires.
+    model_config = ConfigDict(json_schema_extra={"oneOf": [
+        {"properties": {"action": {"const": "SEARCH"},
+                        "skill": {"type": "string", "minLength": 1},
+                        "source": {"type": "string", "minLength": 1},
+                        "question": {"type": "null"}}, "required": ["skill", "source"]},
+        {"properties": {"action": {"const": "ASK_USER"},
+                        "skill": {"type": "string", "minLength": 1},
+                        "question": {"type": "string", "minLength": 8},
+                        "source": {"type": "null"}}, "required": ["skill", "question"]},
+        {"properties": {"action": {"const": "FINISH"}, "skill": {"type": "null"},
+                        "source": {"type": "null"}, "question": {"type": "null"}}},
+    ]})
+    action: Literal["SEARCH", "ASK_USER", "FINISH"]
+    reason: NonblankText
+    skill: NonblankText | None = None
+    source: NonblankText | None = None
+    question: NonblankText | None = None
+
+    @model_validator(mode="after")
+    def legal_action_fields(self) -> Self:
+        if self.action == "SEARCH":
+            valid = self.skill is not None and self.source is not None and self.question is None
+        elif self.action == "ASK_USER":
+            valid = self.skill is not None and self.question is not None and self.source is None
+            valid = valid and len(self.question or "") >= 8
+        else:
+            valid = self.skill is None and self.source is None and self.question is None
+        if not valid:
+            raise ValueError("Action fields do not match the selected action")
+        return self
+
+
+class SourceQuote(MatchingModel):
+    source: NonblankText
+    quote: str
+
+
+class SupplementalAssessment(MatchingModel):
+    skill: NonblankText
+    status: MatchStatus
+    citations: list[SourceQuote]
+    reasoning: NonblankText
+
+
+class SkillChange(MatchingModel):
+    round: int
+    skill: str
+    before: MatchStatus
+    after: MatchStatus
+    score_before: float
+    score_after: float
+
+
+class GatheringTraceEvent(MatchingModel):
+    round: int
+    event: Literal["decision", "search", "reevaluation", "user_reply", "termination"]
+    action: Literal["SEARCH", "ASK_USER", "FINISH"] | None = None
+    skill: str | None = None
+    success: bool | None = None
+    error_code: str | None = None
+    candidate_count: int | None = None
+    status: str | None = None
+
+
+class GatheringResult(MatchingModel):
+    status: Literal["finished", "waiting_for_user", "permission_denied", "tool_error", "model_error", "budget_exhausted", "step_limit"]
+    initial_report: EvidenceMatchReport
+    report: EvidenceMatchReport
+    changes: list[SkillChange]
+    question: str | None = None
+    context: dict[str, Any] | None = None
+    reason: str
+    rounds: int
+    searches: int
+    llm_requests: int
+    trace: list[GatheringTraceEvent]
