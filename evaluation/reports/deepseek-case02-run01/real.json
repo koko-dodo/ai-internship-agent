@@ -1,0 +1,1275 @@
+{
+  "annotation_provenance": "Initial fictional fixtures and labels drafted by coding assistant; independent semantic review decisions supplied by the user and implemented by coding assistant for frozen Gold v1. No multiple-annotator agreement is claimed. Target: sufficiency of complete authorized file evidence against explicit JD skill conditions, not verification of actual candidate ability.",
+  "by_scenario": {
+    "supplement_available": {
+      "agent": {
+        "api_requests": 5,
+        "citation_total": 4,
+        "citation_valid": 4,
+        "duplicate_actions": 0,
+        "duplicate_skill_predictions": 0,
+        "error_rate": 0.0,
+        "evidence_validity": 1.0,
+        "invalid_actions": 0,
+        "latency_seconds": 8.963862583972514,
+        "llm_requests": 5,
+        "positive_citations_reviewed": 0,
+        "positive_citations_supported": 0,
+        "retrieval_attempts": 1,
+        "runs": 1,
+        "semantic_positive_support": null,
+        "semantic_review_coverage": 0.0,
+        "semantic_reviewed": 0,
+        "skill_correct": 1,
+        "skill_status_accuracy": 1.0,
+        "skill_total": 1,
+        "status_counts": {
+          "finished": 1
+        },
+        "task_completion_rate": 1.0,
+        "token_usage": {
+          "completion_tokens": 510,
+          "prompt_tokens": 3978,
+          "total_tokens": 4488
+        },
+        "unexpected_skills": 0,
+        "useful_retrieval_rate": 1.0,
+        "useful_retrievals": 1,
+        "waiting_rate": 0.0
+      },
+      "fixed": {
+        "api_requests": 3,
+        "citation_total": 3,
+        "citation_valid": 3,
+        "duplicate_actions": 0,
+        "duplicate_skill_predictions": 0,
+        "error_rate": 0.0,
+        "evidence_validity": 1.0,
+        "invalid_actions": 0,
+        "latency_seconds": 6.77271887473762,
+        "llm_requests": 3,
+        "positive_citations_reviewed": 0,
+        "positive_citations_supported": 0,
+        "retrieval_attempts": 2,
+        "runs": 1,
+        "semantic_positive_support": null,
+        "semantic_review_coverage": 0.0,
+        "semantic_reviewed": 0,
+        "skill_correct": 1,
+        "skill_status_accuracy": 1.0,
+        "skill_total": 1,
+        "status_counts": {
+          "finished": 1
+        },
+        "task_completion_rate": 1.0,
+        "token_usage": {
+          "completion_tokens": 343,
+          "prompt_tokens": 1782,
+          "total_tokens": 2125
+        },
+        "unexpected_skills": 0,
+        "useful_retrieval_rate": 0.5,
+        "useful_retrievals": 1,
+        "waiting_rate": 0.0
+      },
+      "single": {
+        "api_requests": 1,
+        "citation_total": 1,
+        "citation_valid": 1,
+        "duplicate_actions": 0,
+        "duplicate_skill_predictions": 0,
+        "error_rate": 0.0,
+        "evidence_validity": 1.0,
+        "invalid_actions": 0,
+        "latency_seconds": 4.041731458157301,
+        "llm_requests": 1,
+        "positive_citations_reviewed": 0,
+        "positive_citations_supported": 0,
+        "retrieval_attempts": 0,
+        "runs": 1,
+        "semantic_positive_support": null,
+        "semantic_review_coverage": 0.0,
+        "semantic_reviewed": 0,
+        "skill_correct": 0,
+        "skill_status_accuracy": 0.0,
+        "skill_total": 1,
+        "status_counts": {
+          "finished": 1
+        },
+        "task_completion_rate": 1.0,
+        "token_usage": {
+          "completion_tokens": 155,
+          "prompt_tokens": 432,
+          "total_tokens": 587
+        },
+        "unexpected_skills": 0,
+        "useful_retrieval_rate": null,
+        "useful_retrievals": 0,
+        "waiting_rate": 0.0
+      }
+    }
+  },
+  "dataset_fingerprint": "8b6061303cda37c88904cead19d77500f9e9ab6405ad7f993ffd1d3b7f46c105",
+  "dataset_version": "gold-v1",
+  "execution_cost": {
+    "agent": {
+      "api_requests": 5,
+      "latency_seconds": 8.963862583972514,
+      "llm_requests": 5,
+      "token_usage": {
+        "completion_tokens": 510,
+        "prompt_tokens": 3978,
+        "total_tokens": 4488
+      }
+    },
+    "fixed": {
+      "api_requests": 3,
+      "latency_seconds": 6.77271887473762,
+      "llm_requests": 3,
+      "token_usage": {
+        "completion_tokens": 343,
+        "prompt_tokens": 1782,
+        "total_tokens": 2125
+      }
+    },
+    "single": {
+      "api_requests": 1,
+      "latency_seconds": 4.041731458157301,
+      "llm_requests": 1,
+      "token_usage": {
+        "completion_tokens": 155,
+        "prompt_tokens": 432,
+        "total_tokens": 587
+      }
+    }
+  },
+  "execution_order": [
+    {
+      "case_id": "02",
+      "condition": "as_configured",
+      "method": "single"
+    },
+    {
+      "case_id": "02",
+      "condition": "as_configured",
+      "method": "fixed"
+    },
+    {
+      "case_id": "02",
+      "condition": "as_configured",
+      "method": "agent"
+    }
+  ],
+  "generation_settings": {
+    "max_tokens": 1024,
+    "sampling": "provider defaults, independently sampled; no seed",
+    "sdk_retries": 0,
+    "timeout_seconds": 30
+  },
+  "interpretation": "Small live-model experiment; review provenance is recorded, no multiple-annotator agreement claimed",
+  "mock_script_fingerprint": null,
+  "mode": "real",
+  "model": "deepseek-flash",
+  "normal_access": {
+    "all_cases_with_controls": {
+      "agent": {
+        "api_requests": 5,
+        "citation_total": 4,
+        "citation_valid": 4,
+        "duplicate_actions": 0,
+        "duplicate_skill_predictions": 0,
+        "error_rate": 0.0,
+        "evidence_validity": 1.0,
+        "invalid_actions": 0,
+        "latency_seconds": 8.963862583972514,
+        "llm_requests": 5,
+        "positive_citations_reviewed": 0,
+        "positive_citations_supported": 0,
+        "retrieval_attempts": 1,
+        "runs": 1,
+        "semantic_positive_support": null,
+        "semantic_review_coverage": 0.0,
+        "semantic_reviewed": 0,
+        "skill_correct": 1,
+        "skill_status_accuracy": 1.0,
+        "skill_total": 1,
+        "status_counts": {
+          "finished": 1
+        },
+        "task_completion_rate": 1.0,
+        "token_usage": {
+          "completion_tokens": 510,
+          "prompt_tokens": 3978,
+          "total_tokens": 4488
+        },
+        "unexpected_skills": 0,
+        "useful_retrieval_rate": 1.0,
+        "useful_retrievals": 1,
+        "waiting_rate": 0.0
+      },
+      "fixed": {
+        "api_requests": 3,
+        "citation_total": 3,
+        "citation_valid": 3,
+        "duplicate_actions": 0,
+        "duplicate_skill_predictions": 0,
+        "error_rate": 0.0,
+        "evidence_validity": 1.0,
+        "invalid_actions": 0,
+        "latency_seconds": 6.77271887473762,
+        "llm_requests": 3,
+        "positive_citations_reviewed": 0,
+        "positive_citations_supported": 0,
+        "retrieval_attempts": 2,
+        "runs": 1,
+        "semantic_positive_support": null,
+        "semantic_review_coverage": 0.0,
+        "semantic_reviewed": 0,
+        "skill_correct": 1,
+        "skill_status_accuracy": 1.0,
+        "skill_total": 1,
+        "status_counts": {
+          "finished": 1
+        },
+        "task_completion_rate": 1.0,
+        "token_usage": {
+          "completion_tokens": 343,
+          "prompt_tokens": 1782,
+          "total_tokens": 2125
+        },
+        "unexpected_skills": 0,
+        "useful_retrieval_rate": 0.5,
+        "useful_retrievals": 1,
+        "waiting_rate": 0.0
+      },
+      "single": {
+        "api_requests": 1,
+        "citation_total": 1,
+        "citation_valid": 1,
+        "duplicate_actions": 0,
+        "duplicate_skill_predictions": 0,
+        "error_rate": 0.0,
+        "evidence_validity": 1.0,
+        "invalid_actions": 0,
+        "latency_seconds": 4.041731458157301,
+        "llm_requests": 1,
+        "positive_citations_reviewed": 0,
+        "positive_citations_supported": 0,
+        "retrieval_attempts": 0,
+        "runs": 1,
+        "semantic_positive_support": null,
+        "semantic_review_coverage": 0.0,
+        "semantic_reviewed": 0,
+        "skill_correct": 0,
+        "skill_status_accuracy": 0.0,
+        "skill_total": 1,
+        "status_counts": {
+          "finished": 1
+        },
+        "task_completion_rate": 1.0,
+        "token_usage": {
+          "completion_tokens": 155,
+          "prompt_tokens": 432,
+          "total_tokens": 587
+        },
+        "unexpected_skills": 0,
+        "useful_retrieval_rate": null,
+        "useful_retrievals": 0,
+        "waiting_rate": 0.0
+      }
+    },
+    "control_summary": {},
+    "controls": [],
+    "controls_complete": true,
+    "fault_case_ids": [],
+    "missing_control_pairs": [],
+    "mock_control_script": null,
+    "non_fault_subset": {
+      "agent": {
+        "api_requests": 5,
+        "citation_total": 4,
+        "citation_valid": 4,
+        "duplicate_actions": 0,
+        "duplicate_skill_predictions": 0,
+        "error_rate": 0.0,
+        "evidence_validity": 1.0,
+        "invalid_actions": 0,
+        "latency_seconds": 8.963862583972514,
+        "llm_requests": 5,
+        "positive_citations_reviewed": 0,
+        "positive_citations_supported": 0,
+        "retrieval_attempts": 1,
+        "runs": 1,
+        "semantic_positive_support": null,
+        "semantic_review_coverage": 0.0,
+        "semantic_reviewed": 0,
+        "skill_correct": 1,
+        "skill_status_accuracy": 1.0,
+        "skill_total": 1,
+        "status_counts": {
+          "finished": 1
+        },
+        "task_completion_rate": 1.0,
+        "token_usage": {
+          "completion_tokens": 510,
+          "prompt_tokens": 3978,
+          "total_tokens": 4488
+        },
+        "unexpected_skills": 0,
+        "useful_retrieval_rate": 1.0,
+        "useful_retrievals": 1,
+        "waiting_rate": 0.0
+      },
+      "fixed": {
+        "api_requests": 3,
+        "citation_total": 3,
+        "citation_valid": 3,
+        "duplicate_actions": 0,
+        "duplicate_skill_predictions": 0,
+        "error_rate": 0.0,
+        "evidence_validity": 1.0,
+        "invalid_actions": 0,
+        "latency_seconds": 6.77271887473762,
+        "llm_requests": 3,
+        "positive_citations_reviewed": 0,
+        "positive_citations_supported": 0,
+        "retrieval_attempts": 2,
+        "runs": 1,
+        "semantic_positive_support": null,
+        "semantic_review_coverage": 0.0,
+        "semantic_reviewed": 0,
+        "skill_correct": 1,
+        "skill_status_accuracy": 1.0,
+        "skill_total": 1,
+        "status_counts": {
+          "finished": 1
+        },
+        "task_completion_rate": 1.0,
+        "token_usage": {
+          "completion_tokens": 343,
+          "prompt_tokens": 1782,
+          "total_tokens": 2125
+        },
+        "unexpected_skills": 0,
+        "useful_retrieval_rate": 0.5,
+        "useful_retrievals": 1,
+        "waiting_rate": 0.0
+      },
+      "single": {
+        "api_requests": 1,
+        "citation_total": 1,
+        "citation_valid": 1,
+        "duplicate_actions": 0,
+        "duplicate_skill_predictions": 0,
+        "error_rate": 0.0,
+        "evidence_validity": 1.0,
+        "invalid_actions": 0,
+        "latency_seconds": 4.041731458157301,
+        "llm_requests": 1,
+        "positive_citations_reviewed": 0,
+        "positive_citations_supported": 0,
+        "retrieval_attempts": 0,
+        "runs": 1,
+        "semantic_positive_support": null,
+        "semantic_review_coverage": 0.0,
+        "semantic_reviewed": 0,
+        "skill_correct": 0,
+        "skill_status_accuracy": 0.0,
+        "skill_total": 1,
+        "status_counts": {
+          "finished": 1
+        },
+        "task_completion_rate": 1.0,
+        "token_usage": {
+          "completion_tokens": 155,
+          "prompt_tokens": 432,
+          "total_tokens": 587
+        },
+        "unexpected_skills": 0,
+        "useful_retrieval_rate": null,
+        "useful_retrievals": 0,
+        "waiting_rate": 0.0
+      }
+    }
+  },
+  "policy_ablation": [
+    {
+      "agent_accuracy": 1.0,
+      "agent_requests": 5,
+      "agent_retrievals": 1,
+      "agent_status": "finished",
+      "case_id": "02",
+      "fixed_accuracy": 1.0,
+      "fixed_requests": 3,
+      "fixed_retrievals": 2,
+      "fixed_status": "finished",
+      "same_initial_checkpoint": true,
+      "same_initial_states": true,
+      "same_inputs_grants_budgets": true
+    }
+  ],
+  "request_plan": {
+    "case_ids": [
+      "02"
+    ],
+    "dataset_fingerprint": "8b6061303cda37c88904cead19d77500f9e9ab6405ad7f993ffd1d3b7f46c105",
+    "dataset_version": "gold-v1",
+    "method_order": [
+      "single",
+      "fixed",
+      "agent"
+    ],
+    "mode": "real",
+    "model": "deepseek-flash",
+    "normal_access_controls": false,
+    "per_method_request_caps": {
+      "agent": 12,
+      "fixed": 12,
+      "single": 1
+    },
+    "total_request_cap": 25,
+    "worst_case_request_reservation": 25
+  },
+  "runs": [
+    {
+      "metrics": {
+        "citation_total": 1,
+        "citation_valid": 1,
+        "duplicate_actions": 0,
+        "duplicate_skill_predictions": 0,
+        "evidence_audit": [
+          {
+            "located_spans": [
+              {
+                "end_line": 1,
+                "start_line": 1
+              }
+            ],
+            "semantic_relations": [
+              "unreviewed"
+            ],
+            "skill": "RAG",
+            "source": "evaluation/02/resume.md",
+            "verbatim_and_location_valid": true
+          }
+        ],
+        "evidence_validity": 1.0,
+        "invalid_actions": 0,
+        "positive_citations_reviewed": 0,
+        "positive_citations_supported": 0,
+        "retrieval_attempts": 0,
+        "retrieval_audit": [],
+        "semantic_positive_support": null,
+        "semantic_review_coverage": 0.0,
+        "semantic_reviewed": 0,
+        "skill_correct": 0,
+        "skill_status_accuracy": 0.0,
+        "skill_total": 1,
+        "unexpected_skills": 0,
+        "useful_retrieval_rate": null,
+        "useful_retrievals": 0
+      },
+      "run": {
+        "authorized_sources": [],
+        "budgets": {
+          "max_requests": 1,
+          "max_rounds": 5,
+          "max_searches": 0,
+          "resume_rounds": 2
+        },
+        "case_id": "02",
+        "changes": [],
+        "citations_verified_by_method": false,
+        "condition": "as_configured",
+        "cost": {
+          "api_requests": 1,
+          "llm_requests": 1,
+          "token_usage": {
+            "completion_tokens": 155,
+            "prompt_tokens": 432,
+            "total_tokens": 587
+          },
+          "usage_requests_available": 1
+        },
+        "initial_checkpoint_fingerprint": null,
+        "initial_states": {},
+        "injected_fault": null,
+        "input_fingerprint": "4a753d7f78355b614a6c576b807c72e9e2970c362b188e27cda34f8c7148ed9e",
+        "interactions": [],
+        "latency_seconds": 4.041731458157301,
+        "method": "single",
+        "mode": "real",
+        "model": "deepseek-flash",
+        "model_outputs": [
+          {
+            "error_code": null,
+            "request": 1,
+            "response": {
+              "final_answer": "{\n  \"assessments\": [\n    {\n      \"skill\": \"RAG\",\n      \"status\": \"not_found\",\n      \"quotes\": [\"I built a text formatting utility.\"],\n      \"reasoning\": \"The resume describes a text formatting utility but contains no mention of retrieval-augmented generation, retrieval systems, embeddings, vector search, or related RAG components. The evidence is insufficient to assess RAG experience; this is not a determination of inability.\"\n    }\n  ],\n  \"needs_verification\": [\n    \"Whether the 'text formatting utility' involved any retrieval, embedding, or RAG-related components\",\n    \"Whether the candidate has any unlisted RAG experience\"\n  ],\n  \"model_score\": 5\n}",
+              "tool_calls": []
+            },
+            "stage": "single_assessment",
+            "usage": {
+              "completion_tokens": 155,
+              "prompt_tokens": 432,
+              "total_tokens": 587
+            }
+          }
+        ],
+        "predictions": [
+          {
+            "citations": [
+              {
+                "end_line": null,
+                "quote": "I built a text formatting utility.",
+                "resume_sha256": null,
+                "source": "evaluation/02/resume.md",
+                "start_line": null
+              }
+            ],
+            "skill": "RAG",
+            "status": "not_found"
+          }
+        ],
+        "raw_model_output": "{\n  \"assessments\": [\n    {\n      \"skill\": \"RAG\",\n      \"status\": \"not_found\",\n      \"quotes\": [\"I built a text formatting utility.\"],\n      \"reasoning\": \"The resume describes a text formatting utility but contains no mention of retrieval-augmented generation, retrieval systems, embeddings, vector search, or related RAG components. The evidence is insufficient to assess RAG experience; this is not a determination of inability.\"\n    }\n  ],\n  \"needs_verification\": [\n    \"Whether the 'text formatting utility' involved any retrieval, embedding, or RAG-related components\",\n    \"Whether the candidate has any unlisted RAG experience\"\n  ],\n  \"model_score\": 5\n}",
+        "reason": "",
+        "retrievals": [],
+        "scenario": "supplement_available",
+        "score": 5.0,
+        "status": "finished",
+        "trace": []
+      }
+    },
+    {
+      "metrics": {
+        "citation_total": 3,
+        "citation_valid": 3,
+        "duplicate_actions": 0,
+        "duplicate_skill_predictions": 0,
+        "evidence_audit": [
+          {
+            "located_spans": [
+              {
+                "end_line": 1,
+                "start_line": 1
+              }
+            ],
+            "semantic_relations": [
+              "unreviewed"
+            ],
+            "skill": "RAG",
+            "source": "evaluation/02/resume.md",
+            "verbatim_and_location_valid": true
+          },
+          {
+            "located_spans": [
+              {
+                "end_line": 1,
+                "start_line": 1
+              }
+            ],
+            "semantic_relations": [
+              "unreviewed"
+            ],
+            "skill": "RAG",
+            "source": "evaluation/02/b_rag.md",
+            "verbatim_and_location_valid": true
+          },
+          {
+            "located_spans": [
+              {
+                "end_line": 3,
+                "start_line": 3
+              }
+            ],
+            "semantic_relations": [
+              "unreviewed"
+            ],
+            "skill": "RAG",
+            "source": "evaluation/02/b_rag.md",
+            "verbatim_and_location_valid": true
+          }
+        ],
+        "evidence_validity": 1.0,
+        "invalid_actions": 0,
+        "positive_citations_reviewed": 0,
+        "positive_citations_supported": 0,
+        "retrieval_attempts": 2,
+        "retrieval_audit": [
+          {
+            "correct_status_change": false,
+            "new_reviewed_evidence": false,
+            "skill": "RAG",
+            "source": "evaluation/02/a_notes.md",
+            "useful": false
+          },
+          {
+            "correct_status_change": true,
+            "new_reviewed_evidence": true,
+            "skill": "RAG",
+            "source": "evaluation/02/b_rag.md",
+            "useful": true
+          }
+        ],
+        "semantic_positive_support": null,
+        "semantic_review_coverage": 0.0,
+        "semantic_reviewed": 0,
+        "skill_correct": 1,
+        "skill_status_accuracy": 1.0,
+        "skill_total": 1,
+        "unexpected_skills": 0,
+        "useful_retrieval_rate": 0.5,
+        "useful_retrievals": 1
+      },
+      "run": {
+        "authorized_sources": [
+          "evaluation/02/a_notes.md",
+          "evaluation/02/b_rag.md"
+        ],
+        "budgets": {
+          "max_requests": 12,
+          "max_rounds": 5,
+          "max_searches": 3,
+          "resume_rounds": 2
+        },
+        "case_id": "02",
+        "changes": [
+          {
+            "after": "supported",
+            "before": "not_found",
+            "round": 2,
+            "score_after": 100.0,
+            "score_before": 0.0,
+            "skill": "RAG"
+          }
+        ],
+        "citations_verified_by_method": true,
+        "condition": "as_configured",
+        "cost": {
+          "api_requests": 3,
+          "llm_requests": 3,
+          "token_usage": {
+            "completion_tokens": 343,
+            "prompt_tokens": 1782,
+            "total_tokens": 2125
+          },
+          "usage_requests_available": 3
+        },
+        "initial_checkpoint_fingerprint": "2dc24855eacdba81664902912005be72c482e9f98553580c9eadb079886df23e",
+        "initial_states": {
+          "RAG": "not_found"
+        },
+        "injected_fault": null,
+        "input_fingerprint": "4a753d7f78355b614a6c576b807c72e9e2970c362b188e27cda34f8c7148ed9e",
+        "interactions": [],
+        "latency_seconds": 6.77271887473762,
+        "method": "fixed",
+        "mode": "real",
+        "model": "deepseek-flash",
+        "model_outputs": [
+          {
+            "error_code": null,
+            "request": 1,
+            "response": {
+              "final_answer": "{\"title\":\"Retrieval Intern\",\"company\":\"\",\"required_skills\":[\"RAG\"],\"preferred_skills\":[],\"needs_verification\":[]}",
+              "tool_calls": []
+            },
+            "stage": "jd_extraction",
+            "usage": {
+              "completion_tokens": 35,
+              "prompt_tokens": 319,
+              "total_tokens": 354
+            }
+          },
+          {
+            "error_code": null,
+            "request": 2,
+            "response": {
+              "final_answer": "{\"assessments\":[{\"skill\":\"RAG\",\"status\":\"not_found\",\"quotes\":[\"I built a text formatting utility.\"],\"reasoning\":\"简历仅描述构建了一个文本格式化工具，未提及检索增强生成（RAG）、检索、生成模型或相关技术实践，无法支持具备 RAG 能力。\"}],\"needs_verification\":[\"简历是否包含未在摘要中体现的 RAG 或检索相关项目经验\"]}",
+              "tool_calls": []
+            },
+            "stage": "initial_assessment",
+            "usage": {
+              "completion_tokens": 95,
+              "prompt_tokens": 474,
+              "total_tokens": 569
+            }
+          },
+          {
+            "error_code": null,
+            "request": 3,
+            "response": {
+              "final_answer": "{\"skill\": \"RAG\", \"status\": \"supported\", \"citations\": [{\"source\": \"evaluation/02/b_rag.md\", \"quote\": \"Retrieval: I implemented RAG retrieval with document citations and tested retrieval against a fixed set of questions.\"}, {\"source\": \"evaluation/02/b_rag.md\", \"quote\": \"Generation: I called the LLM with that context to produce answers with citations to the retrieved documents.\"}], \"reasoning\": \"候选人此前状态为 not_found，仅基于简历中文本格式化工具的描述。补充审查 evaluation/02/b_rag.md 后，文件明确记录了 RAG 的检索实现（含文档引用，并用固定问题集测试检索）、增强（将检索段落插入 LLM prompt 作为上下文）以及生成（调用 LLM 基于上下文生成带引用的答案）三个环节，覆盖了 RAG 的核心实践。岗位要求仅为 RAG，未额外要求生产部署经验，因此现有证据足以支持该技能。\"}",
+              "tool_calls": []
+            },
+            "stage": "supplemental_assessment",
+            "usage": {
+              "completion_tokens": 213,
+              "prompt_tokens": 989,
+              "total_tokens": 1202
+            }
+          }
+        ],
+        "predictions": [
+          {
+            "citations": [
+              {
+                "end_line": 1,
+                "quote": "I built a text formatting utility.",
+                "resume_sha256": "31d47818226d8cf41f837bec12920be6c893bb448f1580ff06c5c3084d5c6d32",
+                "source": "evaluation/02/resume.md",
+                "start_line": 1
+              },
+              {
+                "end_line": 1,
+                "quote": "Retrieval: I implemented RAG retrieval with document citations and tested retrieval against a fixed set of questions.",
+                "resume_sha256": "8439e5bc407e702f532192c2aee23a075ad017d024b75aecc7325827594ac8ca",
+                "source": "evaluation/02/b_rag.md",
+                "start_line": 1
+              },
+              {
+                "end_line": 3,
+                "quote": "Generation: I called the LLM with that context to produce answers with citations to the retrieved documents.",
+                "resume_sha256": "8439e5bc407e702f532192c2aee23a075ad017d024b75aecc7325827594ac8ca",
+                "source": "evaluation/02/b_rag.md",
+                "start_line": 3
+              }
+            ],
+            "skill": "RAG",
+            "status": "supported"
+          }
+        ],
+        "raw_model_output": null,
+        "reason": "Deterministic fixed workflow policy; not an LLM decision.",
+        "retrievals": [
+          {
+            "candidates": [],
+            "error_code": null,
+            "round": 1,
+            "skill": "RAG",
+            "source": "evaluation/02/a_notes.md",
+            "success": true
+          },
+          {
+            "candidates": [
+              {
+                "context": "Retrieval: I implemented RAG retrieval with document citations and tested retrieval against a fixed set of questions.\nAugmentation: I inserted the retrieved passages into the LLM prompt as context.\nGeneration: I called the LLM with that context to produce answers with citations to the retrieved documents.\n",
+                "line_number": 1,
+                "sha256": "8439e5bc407e702f532192c2aee23a075ad017d024b75aecc7325827594ac8ca",
+                "source": "evaluation/02/b_rag.md",
+                "text": "Retrieval: I implemented RAG retrieval with document citations and tested retrieval against a fixed set of questions."
+              }
+            ],
+            "error_code": null,
+            "round": 2,
+            "skill": "RAG",
+            "source": "evaluation/02/b_rag.md",
+            "success": true
+          }
+        ],
+        "scenario": "supplement_available",
+        "score": 100.0,
+        "status": "finished",
+        "trace": [
+          {
+            "action": "SEARCH",
+            "candidate_count": null,
+            "error_code": null,
+            "event": "decision",
+            "round": 1,
+            "skill": "RAG",
+            "status": null,
+            "success": null
+          },
+          {
+            "action": "SEARCH",
+            "candidate_count": 0,
+            "error_code": null,
+            "event": "search",
+            "round": 1,
+            "skill": "RAG",
+            "status": null,
+            "success": true
+          },
+          {
+            "action": "SEARCH",
+            "candidate_count": null,
+            "error_code": null,
+            "event": "decision",
+            "round": 2,
+            "skill": "RAG",
+            "status": null,
+            "success": null
+          },
+          {
+            "action": "SEARCH",
+            "candidate_count": 1,
+            "error_code": null,
+            "event": "search",
+            "round": 2,
+            "skill": "RAG",
+            "status": null,
+            "success": true
+          },
+          {
+            "action": null,
+            "candidate_count": null,
+            "error_code": null,
+            "event": "reevaluation",
+            "round": 2,
+            "skill": "RAG",
+            "status": null,
+            "success": true
+          },
+          {
+            "action": "FINISH",
+            "candidate_count": null,
+            "error_code": null,
+            "event": "decision",
+            "round": 3,
+            "skill": null,
+            "status": null,
+            "success": null
+          },
+          {
+            "action": null,
+            "candidate_count": null,
+            "error_code": null,
+            "event": "termination",
+            "round": 3,
+            "skill": null,
+            "status": "finished",
+            "success": null
+          }
+        ]
+      }
+    },
+    {
+      "metrics": {
+        "citation_total": 4,
+        "citation_valid": 4,
+        "duplicate_actions": 0,
+        "duplicate_skill_predictions": 0,
+        "evidence_audit": [
+          {
+            "located_spans": [
+              {
+                "end_line": 1,
+                "start_line": 1
+              }
+            ],
+            "semantic_relations": [
+              "unreviewed"
+            ],
+            "skill": "RAG",
+            "source": "evaluation/02/resume.md",
+            "verbatim_and_location_valid": true
+          },
+          {
+            "located_spans": [
+              {
+                "end_line": 1,
+                "start_line": 1
+              }
+            ],
+            "semantic_relations": [
+              "unreviewed"
+            ],
+            "skill": "RAG",
+            "source": "evaluation/02/b_rag.md",
+            "verbatim_and_location_valid": true
+          },
+          {
+            "located_spans": [
+              {
+                "end_line": 2,
+                "start_line": 2
+              }
+            ],
+            "semantic_relations": [
+              "unreviewed"
+            ],
+            "skill": "RAG",
+            "source": "evaluation/02/b_rag.md",
+            "verbatim_and_location_valid": true
+          },
+          {
+            "located_spans": [
+              {
+                "end_line": 3,
+                "start_line": 3
+              }
+            ],
+            "semantic_relations": [
+              "unreviewed"
+            ],
+            "skill": "RAG",
+            "source": "evaluation/02/b_rag.md",
+            "verbatim_and_location_valid": true
+          }
+        ],
+        "evidence_validity": 1.0,
+        "invalid_actions": 0,
+        "positive_citations_reviewed": 0,
+        "positive_citations_supported": 0,
+        "retrieval_attempts": 1,
+        "retrieval_audit": [
+          {
+            "correct_status_change": true,
+            "new_reviewed_evidence": true,
+            "skill": "RAG",
+            "source": "evaluation/02/b_rag.md",
+            "useful": true
+          }
+        ],
+        "semantic_positive_support": null,
+        "semantic_review_coverage": 0.0,
+        "semantic_reviewed": 0,
+        "skill_correct": 1,
+        "skill_status_accuracy": 1.0,
+        "skill_total": 1,
+        "unexpected_skills": 0,
+        "useful_retrieval_rate": 1.0,
+        "useful_retrievals": 1
+      },
+      "run": {
+        "authorized_sources": [
+          "evaluation/02/a_notes.md",
+          "evaluation/02/b_rag.md"
+        ],
+        "budgets": {
+          "max_requests": 12,
+          "max_rounds": 5,
+          "max_searches": 3,
+          "resume_rounds": 2
+        },
+        "case_id": "02",
+        "changes": [
+          {
+            "after": "supported",
+            "before": "not_found",
+            "round": 1,
+            "score_after": 100.0,
+            "score_before": 0.0,
+            "skill": "RAG"
+          }
+        ],
+        "citations_verified_by_method": true,
+        "condition": "as_configured",
+        "cost": {
+          "api_requests": 5,
+          "llm_requests": 5,
+          "token_usage": {
+            "completion_tokens": 510,
+            "prompt_tokens": 3978,
+            "total_tokens": 4488
+          },
+          "usage_requests_available": 5
+        },
+        "initial_checkpoint_fingerprint": "2dc24855eacdba81664902912005be72c482e9f98553580c9eadb079886df23e",
+        "initial_states": {
+          "RAG": "not_found"
+        },
+        "injected_fault": null,
+        "input_fingerprint": "4a753d7f78355b614a6c576b807c72e9e2970c362b188e27cda34f8c7148ed9e",
+        "interactions": [],
+        "latency_seconds": 8.963862583972514,
+        "method": "agent",
+        "mode": "real",
+        "model": "deepseek-flash",
+        "model_outputs": [
+          {
+            "error_code": null,
+            "request": 1,
+            "response": {
+              "final_answer": "{\"title\":\"Retrieval Intern\",\"company\":\"\",\"required_skills\":[\"RAG\"],\"preferred_skills\":[],\"needs_verification\":[]}",
+              "tool_calls": []
+            },
+            "stage": "jd_extraction",
+            "usage": {
+              "completion_tokens": 35,
+              "prompt_tokens": 319,
+              "total_tokens": 354
+            }
+          },
+          {
+            "error_code": null,
+            "request": 2,
+            "response": {
+              "final_answer": "{\"assessments\":[{\"skill\":\"RAG\",\"status\":\"not_found\",\"quotes\":[\"I built a text formatting utility.\"],\"reasoning\":\"简历仅描述构建了一个文本格式化工具，未提及检索增强生成（RAG）相关的检索、生成、向量检索或知识库集成等任何内容。\"}],\"needs_verification\":[]}",
+              "tool_calls": []
+            },
+            "stage": "initial_assessment",
+            "usage": {
+              "completion_tokens": 75,
+              "prompt_tokens": 474,
+              "total_tokens": 549
+            }
+          },
+          {
+            "error_code": null,
+            "request": 3,
+            "response": {
+              "final_answer": "{\"action\": \"SEARCH\", \"reason\": \"RAG 是必需技能且当前未找到证据；存在两个已授权且未搜索的来源，优先从针对性说明文件 b_rag.md 中核实。\", \"skill\": \"RAG\", \"source\": \"evaluation/02/b_rag.md\", \"question\": null}",
+              "tool_calls": []
+            },
+            "stage": "action_decision",
+            "usage": {
+              "completion_tokens": 71,
+              "prompt_tokens": 1110,
+              "total_tokens": 1181
+            }
+          },
+          {
+            "error_code": null,
+            "request": 4,
+            "response": {
+              "final_answer": "{\"skill\": \"RAG\", \"status\": \"supported\", \"citations\": [{\"source\": \"evaluation/02/b_rag.md\", \"quote\": \"Retrieval: I implemented RAG retrieval with document citations and tested retrieval against a fixed set of questions.\"}, {\"source\": \"evaluation/02/b_rag.md\", \"quote\": \"Augmentation: I inserted the retrieved passages into the LLM prompt as context.\"}, {\"source\": \"evaluation/02/b_rag.md\", \"quote\": \"Generation: I called the LLM with that context to produce answers with citations to the retrieved documents.\"}], \"reasoning\": \"evaluation/02/b_rag.md 明确记录了候选人在 RAG 三个环节的实践：实现带文档引用的 RAG 检索并用固定问题集测试检索；将检索到的段落作为上下文插入 LLM 提示词；调用 LLM 基于该上下文生成带引用答案。这覆盖了岗位唯一要求的 RAG 技能，因此判定为 supported。此前 not_found 的判断仅基于 resume.md 的文本格式化工具描述，但另一份文件提供了直接的 RAG 实现证据。文件未提及生产或真实业务环境部署，但岗位描述并未要求生产环境经验，故不因此降级。\"}",
+              "tool_calls": []
+            },
+            "stage": "supplemental_assessment",
+            "usage": {
+              "completion_tokens": 269,
+              "prompt_tokens": 966,
+              "total_tokens": 1235
+            }
+          },
+          {
+            "error_code": null,
+            "request": 5,
+            "response": {
+              "final_answer": "{\"action\": \"FINISH\", \"reason\": \"唯一技能 RAG 已由授权材料检索获得候选并标记 supported；没有可用搜索组合或待询问技能目标，剩余缺口无继续检索价值。\", \"skill\": null, \"source\": null, \"question\": null}",
+              "tool_calls": []
+            },
+            "stage": "action_decision",
+            "usage": {
+              "completion_tokens": 60,
+              "prompt_tokens": 1109,
+              "total_tokens": 1169
+            }
+          }
+        ],
+        "predictions": [
+          {
+            "citations": [
+              {
+                "end_line": 1,
+                "quote": "I built a text formatting utility.",
+                "resume_sha256": "31d47818226d8cf41f837bec12920be6c893bb448f1580ff06c5c3084d5c6d32",
+                "source": "evaluation/02/resume.md",
+                "start_line": 1
+              },
+              {
+                "end_line": 1,
+                "quote": "Retrieval: I implemented RAG retrieval with document citations and tested retrieval against a fixed set of questions.",
+                "resume_sha256": "8439e5bc407e702f532192c2aee23a075ad017d024b75aecc7325827594ac8ca",
+                "source": "evaluation/02/b_rag.md",
+                "start_line": 1
+              },
+              {
+                "end_line": 2,
+                "quote": "Augmentation: I inserted the retrieved passages into the LLM prompt as context.",
+                "resume_sha256": "8439e5bc407e702f532192c2aee23a075ad017d024b75aecc7325827594ac8ca",
+                "source": "evaluation/02/b_rag.md",
+                "start_line": 2
+              },
+              {
+                "end_line": 3,
+                "quote": "Generation: I called the LLM with that context to produce answers with citations to the retrieved documents.",
+                "resume_sha256": "8439e5bc407e702f532192c2aee23a075ad017d024b75aecc7325827594ac8ca",
+                "source": "evaluation/02/b_rag.md",
+                "start_line": 3
+              }
+            ],
+            "skill": "RAG",
+            "status": "supported"
+          }
+        ],
+        "raw_model_output": null,
+        "reason": "唯一技能 RAG 已由授权材料检索获得候选并标记 supported；没有可用搜索组合或待询问技能目标，剩余缺口无继续检索价值。",
+        "retrievals": [
+          {
+            "candidates": [
+              {
+                "context": "Retrieval: I implemented RAG retrieval with document citations and tested retrieval against a fixed set of questions.\nAugmentation: I inserted the retrieved passages into the LLM prompt as context.\nGeneration: I called the LLM with that context to produce answers with citations to the retrieved documents.\n",
+                "line_number": 1,
+                "sha256": "8439e5bc407e702f532192c2aee23a075ad017d024b75aecc7325827594ac8ca",
+                "source": "evaluation/02/b_rag.md",
+                "text": "Retrieval: I implemented RAG retrieval with document citations and tested retrieval against a fixed set of questions."
+              }
+            ],
+            "error_code": null,
+            "round": 1,
+            "skill": "RAG",
+            "source": "evaluation/02/b_rag.md",
+            "success": true
+          }
+        ],
+        "scenario": "supplement_available",
+        "score": 100.0,
+        "status": "finished",
+        "trace": [
+          {
+            "action": "SEARCH",
+            "candidate_count": null,
+            "error_code": null,
+            "event": "decision",
+            "round": 1,
+            "skill": "RAG",
+            "status": null,
+            "success": null
+          },
+          {
+            "action": "SEARCH",
+            "candidate_count": 1,
+            "error_code": null,
+            "event": "search",
+            "round": 1,
+            "skill": "RAG",
+            "status": null,
+            "success": true
+          },
+          {
+            "action": null,
+            "candidate_count": null,
+            "error_code": null,
+            "event": "reevaluation",
+            "round": 1,
+            "skill": "RAG",
+            "status": null,
+            "success": true
+          },
+          {
+            "action": "FINISH",
+            "candidate_count": null,
+            "error_code": null,
+            "event": "decision",
+            "round": 2,
+            "skill": null,
+            "status": null,
+            "success": null
+          },
+          {
+            "action": null,
+            "candidate_count": null,
+            "error_code": null,
+            "event": "termination",
+            "round": 2,
+            "skill": null,
+            "status": "finished",
+            "success": null
+          }
+        ]
+      }
+    }
+  ],
+  "schema_version": 2,
+  "semantic_fingerprint": "b19d9f169d2f1575cf85e2d3fc601bac064b563c5b46e151df2e64a3e72d01e4",
+  "summary": {
+    "agent": {
+      "api_requests": 5,
+      "citation_total": 4,
+      "citation_valid": 4,
+      "duplicate_actions": 0,
+      "duplicate_skill_predictions": 0,
+      "error_rate": 0.0,
+      "evidence_validity": 1.0,
+      "invalid_actions": 0,
+      "latency_seconds": 8.963862583972514,
+      "llm_requests": 5,
+      "positive_citations_reviewed": 0,
+      "positive_citations_supported": 0,
+      "retrieval_attempts": 1,
+      "runs": 1,
+      "semantic_positive_support": null,
+      "semantic_review_coverage": 0.0,
+      "semantic_reviewed": 0,
+      "skill_correct": 1,
+      "skill_status_accuracy": 1.0,
+      "skill_total": 1,
+      "status_counts": {
+        "finished": 1
+      },
+      "task_completion_rate": 1.0,
+      "token_usage": {
+        "completion_tokens": 510,
+        "prompt_tokens": 3978,
+        "total_tokens": 4488
+      },
+      "unexpected_skills": 0,
+      "useful_retrieval_rate": 1.0,
+      "useful_retrievals": 1,
+      "waiting_rate": 0.0
+    },
+    "fixed": {
+      "api_requests": 3,
+      "citation_total": 3,
+      "citation_valid": 3,
+      "duplicate_actions": 0,
+      "duplicate_skill_predictions": 0,
+      "error_rate": 0.0,
+      "evidence_validity": 1.0,
+      "invalid_actions": 0,
+      "latency_seconds": 6.77271887473762,
+      "llm_requests": 3,
+      "positive_citations_reviewed": 0,
+      "positive_citations_supported": 0,
+      "retrieval_attempts": 2,
+      "runs": 1,
+      "semantic_positive_support": null,
+      "semantic_review_coverage": 0.0,
+      "semantic_reviewed": 0,
+      "skill_correct": 1,
+      "skill_status_accuracy": 1.0,
+      "skill_total": 1,
+      "status_counts": {
+        "finished": 1
+      },
+      "task_completion_rate": 1.0,
+      "token_usage": {
+        "completion_tokens": 343,
+        "prompt_tokens": 1782,
+        "total_tokens": 2125
+      },
+      "unexpected_skills": 0,
+      "useful_retrieval_rate": 0.5,
+      "useful_retrievals": 1,
+      "waiting_rate": 0.0
+    },
+    "single": {
+      "api_requests": 1,
+      "citation_total": 1,
+      "citation_valid": 1,
+      "duplicate_actions": 0,
+      "duplicate_skill_predictions": 0,
+      "error_rate": 0.0,
+      "evidence_validity": 1.0,
+      "invalid_actions": 0,
+      "latency_seconds": 4.041731458157301,
+      "llm_requests": 1,
+      "positive_citations_reviewed": 0,
+      "positive_citations_supported": 0,
+      "retrieval_attempts": 0,
+      "runs": 1,
+      "semantic_positive_support": null,
+      "semantic_review_coverage": 0.0,
+      "semantic_reviewed": 0,
+      "skill_correct": 0,
+      "skill_status_accuracy": 0.0,
+      "skill_total": 1,
+      "status_counts": {
+        "finished": 1
+      },
+      "task_completion_rate": 1.0,
+      "token_usage": {
+        "completion_tokens": 155,
+        "prompt_tokens": 432,
+        "total_tokens": 587
+      },
+      "unexpected_skills": 0,
+      "useful_retrieval_rate": null,
+      "useful_retrievals": 0,
+      "waiting_rate": 0.0
+    }
+  }
+}

@@ -1,0 +1,2 @@
+# Optional dependency for src.deepseek and its offline adapter tests.
+openai>=1.0,<4

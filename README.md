@@ -1,54 +1,203 @@
 # AI Internship Agent
 
-当前工具层使用 Python 3.12、Pydantic 2、pytest，不调用 LLM 或网络服务。
+A framework-free Python agent for evidence-grounded resume–job matching,
+with bounded tool execution, resumable evidence gathering, and reproducible
+baseline comparisons.
 
-## 工具接口
+Python 3.12 · Pydantic 2 · pytest · DeepSeek adapter · No LangGraph or LangChain
 
-- `read_resume(file_path, *, allowed_directory=...) -> str`：UTF-8 TXT/Markdown。
-  保留原有单参数用法，默认仅允许项目 `examples/`；相对路径仍相对于当前工作目录。
-  支持配置一个允许目录，解析 `..` 和符号链接后检查真实路径归属，并检查真实文件扩展名。
-- `parse_job(jd_text) -> JobPosting`：提取 `Title/职位`、`Company/公司` 等标签，
-  无职位标签时取首个非公司非空行；保留完整原始 JD。
-  通过 `src/tools.py` 的固定技能词表、别名和 `Required/任职要求`、
-  `Preferred/加分项` 等行首标签区分技能。无分区的命中默认为必备；同一技能必备优先。
-  技能顺序按原文行序、同行词表序排列，不重复。
-- `find_evidence(resume_text, skills) -> list[SkillEvidence]`：逐关键词返回原文匹配行，
-  保留行内空格（不包含换行符）；无证据时 `found=False, evidence=[]`。
-  关键词不区分大小写，按字面匹配，不做别名扩展；ASCII 关键词要求单词边界，
-  避免 `SQL` 匹配 `MySQL`，同时支持中文紧邻英文技能。
+## 1. Project Overview
 
-## 注册与执行
+A resume may omit relevant project work, while a job description can combine
+skills with conditions such as production experience. A useful comparison needs
+traceable evidence and an explicit way to handle missing information.
 
-```python
-from src.tool_registry import create_tool_registry
+This project analyzes **one Resume + one JD**, produces structured skill states
+and citations, and can search explicitly authorized project files or ask the
+user for clarification. The LLM proposes actions and semantic judgments;
+Python validates execution, verifies quotes, enforces budgets and computes
+scores. It does not apply to jobs or submit resumes.
 
-registry = create_tool_registry()  # 也可由应用代码指定 allowed_directory
-result = registry.execute("read_resume", {"file_path": "examples/resume.txt"})
-print(result.model_dump_json())
+The implementation explores whether autonomous evidence gathering justifies
+its extra model calls compared with a fixed workflow. Results expose costs
+and failure modes rather than claim an overall Agent advantage.
+
+## 2. Architecture
+
+```mermaid
+flowchart TD
+    Input["Resume + Job Description"] --> Loop["Bounded Agent Loop"]
+    Loop --> Registry["Tool Registry + Pydantic Validation"]
+    Registry --> Matcher["Matching Engine"]
+    Matcher --> Verify["Exact Quote and Source Verification"]
+    Verify --> Score["Deterministic Scoring"]
+    Score --> Report["Initial or Updated Evidence Report"]
+    Report --> Gather["Bounded Evidence Gathering"]
+    Gather --> Action{"SEARCH / ASK_USER / FINISH"}
+    Action -->|SEARCH| Search["Registered Evidence Search"]
+    Search --> Files["Explicitly Authorized Project Files"]
+    Files --> Review["Evidence Re-evaluation"]
+    Review --> Verify
+    Action -->|ASK_USER| Waiting["waiting_for_user"]
+    Waiting --> Reply["Explicit User Reply"]
+    Reply --> Gather
+    Action -->|FINISH| Final["Structured Final Report"]
+    Client["LLM Interface: Mock or DeepSeek"]
+    Loop -.-> Client
+    Matcher -.-> Client
+    Gather -.-> Client
+    Review -.-> Client
+    Eval["Evaluation: Single / Fixed / Agent"]
+    Eval -.-> Matcher
+    Eval -.-> Gather
 ```
 
-`ToolRegistry()` 初始为空；只有显式 `register(name, arguments_model, handler)` 的工具可执行。
-标准工厂显式注册上述三个工具。允许目录由应用配置，工具参数无法覆盖。
-Pydantic 严格拒绝参数类型错误、额外字段、缺失字段及空白关键词。
-执行结果统一为 `tool_name/success/data/error`，成功数据可 JSON 序列化，
-错误包含稳定 `code` 和说明，参数验证错误不回显输入值。
-直接调用工具函数时仍抛出 Python/Pydantic 异常，执行器负责转为统一结果。
+Solid arrows show the production flow; dotted arrows show dependencies.
+The matching tool contains semantic LLM calls. The later gathering stage is a
+separate bounded state machine. Evaluation initializes Fixed and Agent directly
+through the shared Matcher, excluding initial tool-routing overhead from both.
 
-## 离线测试
+| Component | Implementation |
+| --- | --- |
+| Agent Loop and provider-neutral protocol | [agent.py](src/agent.py), [llm.py](src/llm.py), [deepseek.py](src/deepseek.py) |
+| Explicit tools and strict arguments | [tool_registry.py](src/tool_registry.py), [schemas.py](src/schemas.py) |
+| Evidence matching, quote verification and scoring | [matching.py](src/matching.py) |
+| Authorized search and resumable gathering | [evidence_search.py](src/evidence_search.py), [autonomy.py](src/autonomy.py) |
+| Baselines, frozen fixtures and reports | [evaluation/](evaluation/README.md) |
 
-在已安装 Pydantic 2 和 pytest 的 Python 3.12 环境运行：
+See [Architecture](docs/ARCHITECTURE.md) for execution contracts and
+[Development Notes](docs/DEVELOPMENT.md) for design choices and failure cases.
+
+## 3. Key Features
+
+- **Custom Tool Calling loop:** sequential multi-tool execution, call/result ID
+  correlation, recoverable errors and explicit step limits.
+- **One tool contract:** Pydantic models generate Tool Schemas and strictly
+  validate execution arguments; only registered handlers can run.
+- **Grounded reports:** supported / partial / not_found / uncertain states with
+  source text, line locations and content hashes; Python calculates the score.
+- **Bounded autonomy:** model-selected SEARCH / ASK_USER / FINISH, explicit file
+  grants, search deduplication and shared LLM request limits.
+- **Human-in-the-Loop:** waiting is a real state; one finite recovery window
+  follows an actual reply. User statements remain unverified leads.
+- **Offline evaluation:** scripted clients, Fake SDK tests, frozen Gold,
+  baseline comparisons and traceable JSON/Markdown reports.
+
+## 4. Quick Start
+
+Run from the repository root. Install dependencies once; the demo and tests
+below run offline without an API key. The SDK is needed for the adapter tests,
+even though those tests inject Fake SDK responses.
 
 ```sh
-.venv/bin/python -m pytest
+python3.12 -m venv .venv
+.venv/bin/python -m pip install 'pydantic>=2,<3' pytest -r requirements-deepseek.txt
+.venv/bin/python -m examples.demo_agent
+.venv/bin/python -m examples.demo_autonomous_evidence
+.venv/bin/python -m pytest -q
 ```
 
-`pytest.ini` 默认只收集 `tests/`。根目录历史 `test_direct.py` 和 `test_gemini.py`
-在导入时会加载环境密钥并发起真实 API 请求，因此不纳入默认测试；不要显式运行它们。
+Latest local validation: **545 tests passed**. Mock decisions are scripted;
+local tools, validation, scoring and state transitions actually execute.
 
-## 设计限制
+The example resume is an anonymized and simplified sample adapted from the author's project experience.
+This describes `examples/resume.txt`; the evaluation fixtures are fictional.
 
-JD 提取是可测试的文本规则，词表外技能、否定、熟练度、隐含要求和复杂格式不作语义判断。
-证据只是原文提及，不代表技能得到验证，例如“未使用 Python”仍会匹配。
-文件工具只处理可信本地应用配置下的普通文本；路径检查和读取之间未实现操作系统级原子锁定，
-不用于存在并发恶意符号链接替换的多租户文件系统。暂无文件大小限制或 PDF/DOCX 支持。
-本阶段不包含 Agent Loop、真实 LLM、前端或数据库。
+Generate fresh offline evaluation artifacts without overwriting saved reports:
+
+```sh
+.venv/bin/python -m evaluation.run --output evaluation/reports/local-mock
+```
+
+Optional paid DeepSeek runs require explicit opt-in and credentials supplied
+through the process environment. The project does not load `.env`. See the
+[manual evaluation procedure](evaluation/README.md#manual-live-evaluation)
+for preflight, request budgets and separate output directories.
+
+## 5. Example Workflow
+
+The offline gathering demo uses explicitly fictional project material:
+
+1. Initial evidence is insufficient for a required skill.
+2. A preset Mock decision selects SEARCH on an authorized project file.
+3. Python retrieves original text and the model proposes a supplemental state.
+4. Python verifies the citation, applies evidence guards and recomputes the score.
+5. The session finishes, or returns `waiting_for_user` with a specific question.
+
+For SQL, JOIN/GROUP BY practice can coexist with synthetic data and no production
+deployment. Such evidence can partially satisfy a production-qualified job
+requirement without denying the underlying querying practice. A reply claiming
+experience does not become verified project evidence or increase the score.
+
+The demo also exercises empty searches, blocked repeats and bounded recovery.
+Its preset decisions demonstrate control flow, not real autonomous reasoning.
+
+## 6. Evaluation & Results
+
+The frozen **gold-v1** dataset has **12 fictional cases and 13 skill labels**.
+Labels assess whether the complete authorized materials support JD conditions,
+not whether a candidate truly has an ability. It has one independent semantic
+review, not a measured multi-annotator agreement study.
+
+| Method | Decision policy and information |
+| --- | --- |
+| Single LLM | One call; Resume/JD only; raw judgments and optional score retained, citations unverified by the method |
+| Fixed Workflow | Deterministic search/ask policy with the same authorized files, semantic judge, verifier, scorer and budgets as Agent |
+| Autonomous Agent | LLM chooses actions within those same execution constraints |
+
+Two saved live DeepSeek cases show a cost trade-off:
+
+| Case | Fixed requests | Agent requests | Fixed tokens | Agent tokens | Fixed / Agent aligned accuracy |
+| --- | ---: | ---: | ---: | ---: | --- |
+| 02: supplemental RAG evidence | 3 | 5 | 2,125 | 4,488 | 1/1 / 1/1 |
+| 05: SQL practice with production limits | 3 | 7 | 2,083 | 7,266 | 1/1 / 1/1 |
+
+Tokens are historical provider usage. Accuracy in this table uses
+**skill-alignment-v2**, a post-hoc evaluation protocol revision aligning explicit
+aliases and preserving JD-bound conditions. It does not represent improved
+model responses. Original case 05 accuracy was Fixed 1/2 and Agent 0/3, affected
+by skill naming and decomposition; those reports remain unchanged.
+
+Agent avoided an irrelevant file in case 02 but spent more model requests.
+Case 05 included an additional empty search. Two cases, one run per method and
+independent sampling cannot establish overall superiority or policy causality.
+Mock results validate the framework, not real model accuracy.
+
+One lossless decision-JSON formatting change reduced reconstructed offline
+context from **6,115 to 5,738 characters** for case 02 and **13,672 to 12,837**
+for case 05. Calls and replayed behavior were unchanged. These are character
+counts, **not measured token savings**.
+
+[Protocol and report index](evaluation/README.md) ·
+[Live result audit](evaluation/reports/LIVE_ANALYSIS.md) ·
+[Offline format A/B](evaluation/reports/token-cost-format-ab/offline-ab.md)
+
+## 7. Reliability & Safety
+
+- File roots and individual supplemental grants are application-controlled.
+  Paths in model output or user replies do not grant access.
+- Python rejects unauthorized reads, duplicate searches and invalid arguments.
+  Permission failures stop rather than trigger path reconstruction.
+- Gathering defaults to 3 searches, 5 initial decision rounds and one recovery
+  window of up to 2 rounds, within a shared 12-request attempt budget.
+- Failed requests consume budget. Limits return explicit termination states;
+  waiting, errors and exhausted budgets are distinct from completion.
+- Traces contain execution metadata, not resume text, raw arguments or secrets.
+  Full reports and message histories can contain input data and require review
+  before publication.
+
+These are application-level safeguards, not an operating-system sandbox or
+proof that source documents are truthful. See the [detailed contracts](docs/ARCHITECTURE.md).
+
+## 8. Limitations
+
+Literal retrieval can miss paraphrases. LLM extraction and semantic judgments
+can be wrong; exact citations prove text exists, not that it supports a claim.
+Small fixtures and sparse semantic annotations limit evaluation conclusions.
+
+Execution is synchronous, recovery is in memory, and request/output caps are
+not a hard currency budget. File checks do not prevent malicious concurrent
+filesystem replacement. Inputs are UTF-8 TXT/Markdown; there is no PDF parser,
+frontend, database, batch recruiter workflow or job-submission feature.
+
+[MIT License](LICENSE)
